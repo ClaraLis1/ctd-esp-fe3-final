@@ -1,4 +1,4 @@
-import {FaqsType, faqsData} from '../../../components/faqs/faqsData'
+import {FaqsType, faqsData} from 'dh-marvel/components/faqs/faqsData'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = FaqsType[] | { message: string }
