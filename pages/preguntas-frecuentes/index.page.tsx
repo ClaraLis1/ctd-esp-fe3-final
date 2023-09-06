@@ -12,12 +12,10 @@ interface Props{
 
 const Index: NextPage<Props> = ({faqs}) => {  
   const [expanded, setExpanded] = React.useState<number | false>(false);
-
   const handleChange =
     (panel: number) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
-    };  
-       
+    };         
         
     return (
       <>
@@ -37,8 +35,7 @@ const Index: NextPage<Props> = ({faqs}) => {
                 {faq.answer}
               </Typography>
             </AccordionDetails>
-          </Accordion>
-          
+          </Accordion>         
           
           ))}
           </div>   
@@ -56,12 +53,10 @@ export default Index
 export const getStaticProps = async () => {  
 //   const response = await fetch(`
 const response = await fetch( 
-     "https://ctd-esp-fe3-final-claralisle.vercel.app/api/faqs"
-    
+     "https://ctd-esp-fe3-final-claralisle.vercel.app/api/faqs"    
   )  
   
   const faqs = await response.json()
-
   return {
     props: {
       faqs
@@ -69,12 +64,3 @@ const response = await fetch(
   }
 }
 
-// import React from 'react'
-
-// const FaqsPage = () => {
-//   return (
-//     <div>FaqsPage</div>
-//   )
-// }
-
-// export default FaqsPage
