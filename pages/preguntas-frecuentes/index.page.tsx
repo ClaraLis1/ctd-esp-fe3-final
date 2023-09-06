@@ -1,4 +1,4 @@
-import type {NextPage} from 'next'
+/*import type {NextPage} from 'next'
 import Head from 'next/head'
 import BodySingle from "dh-marvel/components/layouts/body/single/body-single";
 import LayoutGeneral from 'dh-marvel/components/layouts/layout-general';
@@ -22,12 +22,12 @@ const Index: NextPage<Props> = ({faqs}) => {
 
 export default Index
 
-export const getStaticProps = async () => {  
+/*export const getStaticProps = async () => {  
 //   const response = await fetch(`
 const response = await fetch(
     //  "http://localhost:3000/api/faqs"
-    // "https://ctd-esp-fe3-final-claralisle.vercel.app/api/faqs"
-     "https://ctd-esp-fe3-final-swart.vercel.app/api/faqs"
+     "https://ctd-esp-fe3-final-claralisle.vercel.app/api/faqs"
+    //  "https://ctd-esp-fe3-final-swart.vercel.app/api/faqs"
   )  
   
   const faqs = await response.json()
@@ -37,4 +37,4 @@ const response = await fetch(
       faqs
     }
   }
-}
+}*/
