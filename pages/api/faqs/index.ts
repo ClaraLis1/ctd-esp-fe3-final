@@ -1,20 +1,14 @@
-
-// import { TeamI } from '@/interface/team'
+import {FaqsType, faqsData} from '../../../components/faqs/faqsData'
 import { NextApiRequest, NextApiResponse } from 'next'
 
+type Data = FaqsType[] | { message: string }
 
-
-const handler =async (req:NextApiRequest, res: NextApiResponse)=> {
-
-  // Consultar el method de la petición si es get enviamos los datos de lo contrario enviamos un mensaje de error
-  // if (req.method === "GET") {
-    // const response = await res.status(200).json(faqs)
-  // } else {
-  //   res.status(400).json({ message: "Método no permitido" })
-  // }
-//   console.log("aca"+response);
-   
+const handler = (req:NextApiRequest, res: NextApiResponse<Data>)=> { 
+   if (req.method === "GET") {
+    res.status(200).json(faqsData)
+  } else {
+     res.status(400).json({ message: "Método no permitido" })
+  }   
 }
-
 
 export default handler
