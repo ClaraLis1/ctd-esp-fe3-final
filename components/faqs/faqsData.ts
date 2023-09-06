@@ -20,7 +20,7 @@ export const faqsData: FaqsType[] = [
         "question": "¿Cuanto demoran las entregas?",
         "answer": "Todas nuestras entregas son enviadas a través de DH-Express, que alcanza a todo el país en 24hs."
     },
-    {
+    /*{
         "id": 4,
         "question": "¿Qué métodos de pago están disponibles?",
         "answer": "Solo se aceptan tarjetas de crédito Visa y Mastercard. De momento no aceptamos pagos en efectivo u otros medios."
@@ -29,5 +29,5 @@ export const faqsData: FaqsType[] = [
         "id": 5,
         "question": "¿Se aceptan devoluciones?",
         "answer": "Nuestras compras aceptan devoluciones siempre y cuando el comic se encuentre en su envoltorio original, ya que de otra forma pierden el valor de reventa. Si desea devolverlo y se encuentra en las mismas condiciones en las que fue enviado, comuníquese con el 11-5555-0001 para resolver la devolución."
-    }
+    }*/
 ]
