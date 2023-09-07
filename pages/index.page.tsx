@@ -18,8 +18,7 @@ interface Props{
 }
 
 const Index: NextPage<Props> = ({comics, total}) => {
-    console.log(comics);    
-    console.log(total);    
+   
     
     return (
         <>  
