@@ -7,6 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import { useRouter } from "next/router";
 
 
 interface Comic{
@@ -26,8 +27,12 @@ interface Props{
 export const CardDetail: FC<Props> = ({data}) => {
      const image = data.images[0]   
      const imageUrl = `${image?.path}.${image?.extension}`
-     console.log(data);
+     const router = useRouter()
      
+     const handleComprar = () => {       
+        
+        router.push(`/checkout`);   
+     };
     
     return (        
     <Card sx={{ margin:"0 auto" , maxWidth: 345 ,  backgroundColor:"grey"}}>
@@ -40,7 +45,7 @@ export const CardDetail: FC<Props> = ({data}) => {
         <CardContent>
           
             <Typography variant="body2" color="text.secondary">
-            {data.title}
+                {data.title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
             {data.description}
@@ -54,7 +59,7 @@ export const CardDetail: FC<Props> = ({data}) => {
         </CardContent>
         <Grid  display="flex" justifyContent="flex-end" alignSelf='flex-end' alignItems="center">
         <CardActions >
-            <Button size="small" variant="contained"  disabled={data.stock == 0}>Comprar </Button>
+            <Button onClick={handleComprar} size="small" variant="contained"  disabled={data.stock == 0}>Comprar </Button>
             
         </CardActions>
         </Grid>

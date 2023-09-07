@@ -35,6 +35,11 @@ export const CardComic: FC<Props> = ({title, image, id}) => {
         
         router.push(`/comics/${id}`);   
      };
+
+     const handleComprar = () => {       
+        
+        router.push(`/checkout`);   
+     };
     
     return (
         
@@ -54,7 +59,7 @@ export const CardComic: FC<Props> = ({title, image, id}) => {
         </CardContent>
         <Grid  display="flex" justifyContent="flex-end" alignSelf='flex-end' alignItems="center">
         <CardActions >
-            <Button size="small" variant="contained" >Comprar </Button>
+            <Button onClick={handleComprar}size="small" variant="contained" >Comprar </Button>
             <Button onClick={handlePageChange} size="small" variant="contained" >Ver Detalle</Button>
         </CardActions>
         </Grid>
