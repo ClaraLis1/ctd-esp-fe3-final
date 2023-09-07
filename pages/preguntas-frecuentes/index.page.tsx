@@ -17,28 +17,27 @@ const Index: NextPage<Props> = ({faqs}) => {
     (panel: number) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };         
+      
         
     return (      
       <BodySingle>
           <div style={{ marginTop: '20px'}} >
-          {faqs?.map((faq) =>(
-            <Accordion key={faq.id}  expanded={expanded === faq.id} onChange={handleChange(faq.id)}>
-                <AccordionSummary
-                
+            {faqs?.map((faq) =>(
+              <Accordion key={faq.id}  expanded={expanded === faq.id} onChange={handleChange(faq.id)}>
+                <AccordionSummary                
                   expandIcon={<ExpandMoreIcon/>}
                   aria-controls="panel1bh-content"
-                  id="panel1bh-header"            >
-              
-              <Typography sx={{ color: 'text.secondary' , margin:'0 auto'}}>{faq.question}</Typography>
-            </AccordionSummary >
-            <AccordionDetails  >
-              <Typography >
-                {faq.answer}
-              </Typography>
-            </AccordionDetails>
-          </Accordion>         
-          
-          ))}
+                  id="panel1bh-header"
+                  >              
+                <Typography sx={{ color: 'text.secondary' , margin:'0 auto'}}>{faq.question}</Typography>
+                </AccordionSummary >
+                <AccordionDetails  >
+                  <Typography >
+                    {faq.answer}
+                  </Typography>
+               </AccordionDetails>
+             </Accordion>    
+           ))}
           </div>             
       </BodySingle>   
   )
@@ -47,16 +46,12 @@ const Index: NextPage<Props> = ({faqs}) => {
 export default Index
 
 export const getStaticProps = async () => {  
-//   const response = await fetch(`
-const response = await fetch( 
-     "https://ctd-esp-fe3-final-claralisle.vercel.app/api/faqs"    
-  )  
-  
-  const faqs = await response.json()
-  return {
-    props: {
-      faqs
+  const response = await fetch("https://ctd-esp-fe3-final-claralisle.vercel.app/api/faqs")  
+    const faqs = await response.json()
+    return {
+      props: {
+        faqs
+      }
     }
-  }
 }
 
