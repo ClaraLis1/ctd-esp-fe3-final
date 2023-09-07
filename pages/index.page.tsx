@@ -11,7 +11,7 @@ interface Props{
    data: []
 }
 
-const Index: NextPage<Props> = ({data}:any) => {
+const Index: NextPage<Props> = ({data}) => {
     console.log(data);    
     
     return (
@@ -31,7 +31,7 @@ const Index: NextPage<Props> = ({data}:any) => {
                      <Grid item xs={2} sm={4} md={4} key={comic.id}>
                         <CardComic key={comic.id}
                         // image={comic.image[0]}
-                        name={comic.title}
+                        // name ={comic.title}
                         />
 
                         
