@@ -27,7 +27,7 @@ interface Props{
 }
 export const CardComic: FC<Props> = ({title, image}) => {
     
-    const imageUrl = image?.path + '.' + image?.extension;
+    const imageUrl = `${image?.path}.${image?.extension}`
     
     return (
         
@@ -36,7 +36,7 @@ export const CardComic: FC<Props> = ({title, image}) => {
             component="img"
              alt='imagen de Marvel'
             height="140"
-                image={`${image?.path}.${image?.extension}`}
+                image={imageUrl? imageUrl: ""}
             />
         <CardContent>
           
