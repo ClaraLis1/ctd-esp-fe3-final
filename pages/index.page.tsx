@@ -21,8 +21,8 @@ interface Props{
 
 const Index: NextPage<Props> = ({comics, total}) => {
     const router = useRouter();    
-    const [page, setPage] = React.useState(1)
-    const [comicsApi, setComicsApi] = React.useState(comics);
+    // const [page, setPage] = React.useState(1)
+    // const [comicsApi, setComicsApi] = React.useState(comics);
     
     /*
     
@@ -40,11 +40,11 @@ const Index: NextPage<Props> = ({comics, total}) => {
       }, [page]);
     
 */
-    const handlePageChange = (e:any, page:any) => {        
+    /*const handlePageChange = (e:any, page:any) => {        
         console.log(page);     
         setPage(page)          
         // router.push(`?page=${page}`);   
-     };
+     };*/
 
           
     return (
