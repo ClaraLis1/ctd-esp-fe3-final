@@ -15,32 +15,38 @@ interface Comic{
     id: number
 }
 
-interface Props{
-    comic:Comic
+interface Image{
+    path: string
+    extension: string
 }
-export const CardComic: FC<Props> = ({comic}) => {
+
+interface Props{
+    key: number
+    title:string
+    image: Image | undefined 
+}
+export const CardComic: FC<Props> = ({title, image}) => {
     
+    const imageUrl = image?.path + '.' + image?.extension;
     
     return (
-    <Card sx={{ maxWidth: 345 ,  height:300 }}>
+        
+    <Card sx={{ maxWidth: 345 ,  height:300, backgroundColor:"grey"}}>
         <CardMedia
             component="img"
              alt='imagen de Marvel'
             height="140"
-                image="/static/images/cards/contemplative-reptile.jpg"
-            //  image={comic.images.length>0? comic.images[0].path:""}
-        />
+                image={`${image?.path}.${image?.extension}`}
+            />
         <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-            {comic.title}
-            </Typography>
+          
             <Typography variant="body2" color="text.secondary">
-            {comic.title}
+            {title}
             </Typography>
         </CardContent>
-        <Grid  display="flex" justifyContent="flex-end" alignItems="center">
+        <Grid  display="flex" justifyContent="flex-end" alignSelf='flex-end' alignItems="center">
         <CardActions >
-            <Button size="small" variant="contained">Comprar </Button>
+            <Button size="small" variant="contained" >Comprar </Button>
             <Button size="small" variant="contained" >Ver Detalle</Button>
         </CardActions>
         </Grid>
