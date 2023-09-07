@@ -43,12 +43,10 @@ const Index: NextPage<Props> = ({comics, total}) => {
     const handlePageChange = (e:any, page:any) => {        
         console.log(page);     
         setPage(page)          
-        // router.push(`?page=${page}`);
-      };
+        // router.push(`?page=${page}`);   
+     };
 
-      
-    
-    
+          
     return (
         <>  
             <Head>
