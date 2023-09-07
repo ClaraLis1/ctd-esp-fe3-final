@@ -5,11 +5,10 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { CardComic } from 'dh-marvel/components/ui/card/CardComic';
 import { getComics } from 'dh-marvel/services/marvel/marvel.service';
-import { Comic } from 'dh-marvel/features/marvel/comic.types';
 import Pagination from '@mui/material/Pagination';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { log } from 'console';
+
 
 const INITIAL_OFFSET = 0;
 const INITIAL_LIMIT = 12;
@@ -23,6 +22,8 @@ const Index: NextPage<Props> = ({comics, total}) => {
     const router = useRouter();    
     // const [page, setPage] = React.useState(1)
     // const [comicsApi, setComicsApi] = React.useState(comics);
+   
+    
     
     /*
     
@@ -63,6 +64,7 @@ const Index: NextPage<Props> = ({comics, total}) => {
                     {comics .map((comic:any)=>(
                         <Grid item xs={2} sm={4} md={4} key={comic.id}>
                             <CardComic key={comic.id}
+                                id={comic.id}
                                 title={comic.title}                                 
                                 image = {comic.images[0]}                                        
                             ></CardComic>                          

@@ -16,7 +16,7 @@ export const getComics = async (offset?: number, limit?: number) => {
     return fetchApi("comics", params.toString());
 }
 
-export const getComic = async (comicId: number) => {
+export const getComic = async (comicId: number|string) => {
     const data = await fetchApi(`comics/${comicId}`);
     const results = data.data.results;
     if (results.length > 0) {

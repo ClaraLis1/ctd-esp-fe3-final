@@ -7,9 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import { ImagesearchRoller } from "@mui/icons-material";
-import { useRouter } from "next/router";
-import Link from "next/link";
+
 
 interface Comic{
     images: []
@@ -23,39 +21,41 @@ interface Image{
 }
 
 interface Props{
-    id:number
-    key: number
-    title:string
-    image: Image | undefined 
+    data:any
 }
-export const CardComic: FC<Props> = ({title, image, id}) => {
-    const router = useRouter()
-    const imageUrl = `${image?.path}.${image?.extension}`
-    const handlePageChange = () => {       
-        
-        router.push(`/comics/${id}`);   
-     };
+export const CardDetail: FC<Props> = ({data}) => {
+     const image = data.images[0]   
+     const imageUrl = `${image?.path}.${image?.extension}`
+     console.log(data);
+     
     
-    return (
-        
-    <Card  sx={{ maxWidth: 345 ,  height:300, backgroundColor:"grey"}}>
+    return (        
+    <Card sx={{ margin:"0 auto" , maxWidth: 345 ,  backgroundColor:"grey"}}>
         <CardMedia
-        
             component="img"
              alt='imagen de Marvel'
-            height="140"
+            height="250"
                 image={imageUrl? imageUrl: ""}
             />
         <CardContent>
           
             <Typography variant="body2" color="text.secondary">
-            {title}
+            {data.title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+            {data.description}
+            </Typography>
+            <Typography variant="body2" color="blue">
+            {`Precio  $${data.price}`}
+            </Typography>
+            <Typography sx={{ textDecoration: 'line-through' }} variant="body2" color="red" >
+            {`Precio Anterior $${data.oldPrice}`}
             </Typography>
         </CardContent>
         <Grid  display="flex" justifyContent="flex-end" alignSelf='flex-end' alignItems="center">
         <CardActions >
-            <Button size="small" variant="contained" >Comprar </Button>
-            <Button onClick={handlePageChange} size="small" variant="contained" >Ver Detalle</Button>
+            <Button size="small" variant="contained"  disabled={data.stock == 0}>Comprar </Button>
+            
         </CardActions>
         </Grid>
     </Card>
