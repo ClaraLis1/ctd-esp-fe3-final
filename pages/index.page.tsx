@@ -24,7 +24,7 @@ const Index: NextPage<Props> = ({comics, total}) => {
     const [page, setPage] = React.useState(1)
     const [comicsApi, setComicsApi] = React.useState(comics);
     
-    
+    /*
     
     React.useEffect(() => {
         const offset = INITIAL_LIMIT * (page);
@@ -39,7 +39,7 @@ const Index: NextPage<Props> = ({comics, total}) => {
         localStorage.clear();
       }, [page]);
     
-
+*/
     const handlePageChange = (e:any, page:any) => {        
         console.log(page);     
         setPage(page)          
