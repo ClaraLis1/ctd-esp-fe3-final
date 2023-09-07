@@ -40,11 +40,11 @@ const Index: NextPage<Props> = ({comics, total}) => {
       }, [page]);
     
 */
-    /*const handlePageChange = (e:any, page:any) => {        
+    const handlePageChange = (e:any, page:any) => {        
         console.log(page);     
         setPage(page)          
         // router.push(`?page=${page}`);   
-     };*/
+     };
 
           
     return (
@@ -60,7 +60,7 @@ const Index: NextPage<Props> = ({comics, total}) => {
                     <Pagination onChange={handlePageChange}  sx={{margin: 1}}count={Math.ceil(total / 12)} defaultPage={1} siblingCount={0} boundaryCount={2} />                
                 </Grid>
                 <Grid sx={{margin: 5}} container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                    {comicsApi.map((comic:any)=>(
+                    {comics .map((comic:any)=>(
                         <Grid item xs={2} sm={4} md={4} key={comic.id}>
                             <CardComic key={comic.id}
                                 title={comic.title}                                 
