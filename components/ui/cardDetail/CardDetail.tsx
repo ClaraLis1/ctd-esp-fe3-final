@@ -60,7 +60,6 @@ export const CardDetail: FC<Props> = ({data}) => {
         <Grid  display="flex" justifyContent="flex-end" alignSelf='flex-end' alignItems="center">
         <CardActions >
             <Button onClick={handleComprar} size="small" variant="contained"  disabled={data.stock == 0}>Comprar </Button>
-            
         </CardActions>
         </Grid>
     </Card>
