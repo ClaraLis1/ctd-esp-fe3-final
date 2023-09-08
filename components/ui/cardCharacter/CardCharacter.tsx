@@ -28,8 +28,8 @@ interface Props{
     data:any
 }
 export const CardCharacter: FC<Props> = ({data}) => {
-     const image = data.images[0]      
-     const imageUrl = `${image?.path}.${image?.extension}`
+    //  const image = data.images[0]   
+    //  const imageUrl = `${image?.path}.${image?.extension}`
      const router = useRouter()     
      
      const handelVolver = () => {       
@@ -43,7 +43,8 @@ export const CardCharacter: FC<Props> = ({data}) => {
             component="img"
             alt='imagen de Marvel'
             height="250"
-            image={imageUrl? imageUrl: ""}
+            // image={imageUrl? imageUrl: ""}
+            image={""}
             />
         <CardContent sx={{width:"100%"}}>
             <Typography variant="body2" color="text.secondary">
