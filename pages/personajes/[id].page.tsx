@@ -10,9 +10,7 @@ interface Props {
 }
 
 const CharacterPage:NextPage<Props> = ({character, id}) => {    
-    console.log(character);
-    console.log(id);
-    
+   
 	return (   
         <>
         <Head>
