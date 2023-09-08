@@ -25,7 +25,7 @@ interface Props{
     data:any
 }
 export const CardPanel: FC<Props> = ({data}) => {
-     const image = data.thumbnail
+    const image = data.images[0]      
      const imageUrl = `${image?.path}.${image?.extension}`
      const router = useRouter()
      

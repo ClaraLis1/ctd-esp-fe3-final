@@ -29,7 +29,7 @@ interface Props{
     data:any
 }
 export const CardDetail: FC<Props> = ({data}) => {
-     const image = data.thumbnail
+    const image = data.images[0]      
      const imageUrl = `${image?.path}.${image?.extension}`
      const router = useRouter()
      const [expanded, setExpanded] = React.useState<number | false>(false);
@@ -42,8 +42,6 @@ export const CardDetail: FC<Props> = ({data}) => {
     (panel: number) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };         
-      
-    console.log(data);
     
     return (        
     <Card sx={{ width: "70%", margin:"0 auto" , backgroundColor:"grey", display: "flex", flexDirection: "row" }}>

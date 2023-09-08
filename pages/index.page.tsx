@@ -21,12 +21,9 @@ interface Props{
 const Index: NextPage<Props> = ({comics, total}) => {
     const router = useRouter();    
     // const [page, setPage] = React.useState(1)
-    // const [comicsApi, setComicsApi] = React.useState(comics);
-   
+    // const [comicsApi, setComicsApi] = React.useState(comics);   
     
-    
-    /*
-    
+    /*    
     React.useEffect(() => {
         const offset = INITIAL_LIMIT * (page);
         console.log(offset)        
@@ -66,7 +63,9 @@ const Index: NextPage<Props> = ({comics, total}) => {
                             <CardComic key={comic.id}
                                 id={comic.id}
                                 title={comic.title}                                 
-                                image = {comic.thumbnail}                                        
+                                // image = {comic.images[0]?comic.images[0]:comic.thumbnail
+                                // } 
+                                image = {comic.images[0]}                                      
                             ></CardComic>                          
                         </Grid>
                     ))}

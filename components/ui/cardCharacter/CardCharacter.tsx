@@ -28,10 +28,9 @@ interface Props{
     data:any
 }
 export const CardCharacter: FC<Props> = ({data}) => {
-     const image = data.thumbnail      
+     const image = data.images[0]      
      const imageUrl = `${image?.path}.${image?.extension}`
-     const router = useRouter()
-     const [expanded, setExpanded] = React.useState<number | false>(false);
+     const router = useRouter()     
      
      const handelVolver = () => {       
                 router.push('/');   
