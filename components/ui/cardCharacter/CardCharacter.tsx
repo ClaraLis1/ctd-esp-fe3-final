@@ -51,7 +51,7 @@ export const CardCharacter: FC<Props> = ({data}) => {
                 Comic: {data?.name}
             </Typography>  
             <Typography variant="body2" color="text.secondary">
-                Descipcion: {data.description? data.description : "Sin información"}
+                Descipcion: {data?.description? data.description : "Sin información"}
             </Typography>         
                        
             <CardActions sx={{display: "flex", justifyContent:"flex-end"}}>
