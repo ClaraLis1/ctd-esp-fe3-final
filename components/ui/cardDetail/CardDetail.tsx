@@ -29,7 +29,7 @@ interface Props{
     data:any
 }
 export const CardDetail: FC<Props> = ({data}) => {
-     const image = data.images[0]   
+     const image = data.thumbnail
      const imageUrl = `${image?.path}.${image?.extension}`
      const router = useRouter()
      const [expanded, setExpanded] = React.useState<number | false>(false);
@@ -75,7 +75,7 @@ export const CardDetail: FC<Props> = ({data}) => {
                     {data.characters.items?.map((character:any) =>(
 
                         <Typography key={character.name}>
-                         <NextLink href={`/${character.resourceURI.replace(/^.+\/characters\//, '')}`} passHref> 
+                         <NextLink href={`/personajes/${character.resourceURI.replace(/^.+\/characters\//, '')}`} passHref> 
                             {character.name}
                             </NextLink>  
                         </Typography>

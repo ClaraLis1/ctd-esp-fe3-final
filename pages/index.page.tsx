@@ -66,7 +66,7 @@ const Index: NextPage<Props> = ({comics, total}) => {
                             <CardComic key={comic.id}
                                 id={comic.id}
                                 title={comic.title}                                 
-                                image = {comic.images[0]}                                        
+                                image = {comic.thumbnail}                                        
                             ></CardComic>                          
                         </Grid>
                     ))}
