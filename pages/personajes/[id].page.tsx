@@ -19,7 +19,7 @@ const CharacterPage:NextPage<Props> = ({character, id}) => {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <BodySingle title={"Detalle"}>
-					 <CardCharacter data={character} />
+					    <CardCharacter data={character} />
              </BodySingle>   
            
         </>

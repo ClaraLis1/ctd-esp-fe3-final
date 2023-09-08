@@ -55,7 +55,7 @@ export const CardCharacter: FC<Props> = ({data}) => {
             </Typography>         
                        
             <CardActions sx={{display: "flex", justifyContent:"flex-end"}}>
-                <Button onClick={handelVolver} size="small" variant="contained"  disabled={data.stock == 0}>Volver </Button>
+                <Button onClick={handelVolver} size="small" variant="contained" >Volver </Button>
             </CardActions>
         </CardContent>
         
