@@ -48,7 +48,7 @@ export const CardCharacter: FC<Props> = ({data}) => {
             />
         <CardContent sx={{width:"100%"}}>
             <Typography variant="body2" color="text.secondary">
-                Comic: {data.name}
+                Comic: {data?.name}
             </Typography>  
             <Typography variant="body2" color="text.secondary">
                 Descipcion: {data.description? data.description : "Sin información"}
