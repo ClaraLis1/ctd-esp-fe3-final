@@ -1,5 +1,5 @@
 import React from 'react'
-import { FC } from "react"
+import { FC, useState    } from "react"
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Paper from '@mui/material/Paper'
@@ -22,19 +22,39 @@ interface DataForm{
     zipCode: string|number
     creditCard: number
     creditCardName: string
-    expirateDate:Date
+    expirateDate:number
     securityCode: number
 }
 
+const defaultValues={    
+        name:"",
+        lastName:"",
+        mail:"",    
+        address: "",
+        addressNumber:"",
+        city:"",
+        state:"",
+        zipCode: "",       
+        creditCard: "",
+        creditCardName: "",
+        expirateDate:"",
+        securityCode: ""
+    
+}
+
 const FormCheckout: FC<Props>  = ({step}) => {
+    const[data, setData] = useState(defaultValues)
+   
 
     const{control, handleSubmit, formState:{errors}, getValues} = useForm<DataForm>()
     const onSubmit=(data:any)=>{
         console.log(data);
+        setData(data)
     }
 
-    const info = getValues()
-    console.log(info);
+    
+    
+    
     
   return (
     <Box sx={{maxWidth:'500px', margin:'0 auto'}}>
@@ -98,6 +118,7 @@ const FormCheckout: FC<Props>  = ({step}) => {
             />
             
         </Box>}
+       
         {step===2 && <>
         <Paper elevation={1} sx={{p:"24px", display:"flex", flexDirection:"column", gap:3 }}>
             <Typography> Dirección de entrega</Typography>
@@ -261,8 +282,9 @@ const FormCheckout: FC<Props>  = ({step}) => {
                
                 
         </Box>}
+        
             <Box sx={{display:'flex', flexDirection:'row', justifyContent: "space-evenly", margin: "5px"}}>
-                <Button size="small" sx={{width:"300px"}} variant="contained" type='submit' >Enviar </Button>
+                <Button size="small" sx={{width:"300px"}} variant="contained" type='submit' >guardar </Button>
             </Box>
         </form>
     </Box>

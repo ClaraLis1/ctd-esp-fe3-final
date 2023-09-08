@@ -8,6 +8,10 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { useRouter } from "next/router";
+import { Accordion, AccordionSummary } from '@mui/material';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import NextLink from 'next/link'
 
 
 interface Comic{
@@ -28,40 +32,77 @@ export const CardDetail: FC<Props> = ({data}) => {
      const image = data.images[0]   
      const imageUrl = `${image?.path}.${image?.extension}`
      const router = useRouter()
+     const [expanded, setExpanded] = React.useState<number | false>(false);
      
      const handleComprar = () => {       
-        
-        router.push(`/checkout`);   
+                router.push(`/checkout/${data.id}`);   
      };
+
+  const handleChange =
+    (panel: number) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
+    };         
+      
+    console.log(data);
     
     return (        
-    <Card sx={{ margin:"0 auto" , maxWidth: 345 ,  backgroundColor:"grey"}}>
+    <Card sx={{ width: "70%", margin:"0 auto" , backgroundColor:"grey", display: "flex", flexDirection: "row" }}>
         <CardMedia
             component="img"
-             alt='imagen de Marvel'
+            alt='imagen de Marvel'
             height="250"
-                image={imageUrl? imageUrl: ""}
+            image={imageUrl? imageUrl: ""}
             />
-        <CardContent>
-          
+        <CardContent sx={{width:"100%"}}>
             <Typography variant="body2" color="text.secondary">
-                {data.title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-            {data.description}
-            </Typography>
+                Comic: {data.title}
+            </Typography>          
             <Typography variant="body2" color="blue">
             {`Precio  $${data.price}`}
             </Typography>
             <Typography sx={{ textDecoration: 'line-through' }} variant="body2" color="red" >
             {`Precio Anterior $${data.oldPrice}`}
             </Typography>
+              <Accordion key='characters'  expanded={expanded === 1} onChange={handleChange(1)}>
+                <AccordionSummary                
+                  expandIcon={<ExpandMoreIcon/>}
+                  aria-controls="panel1bh-content"
+                  id="panel1bh-header"
+                  >              
+                <Typography sx={{ color: 'text.secondary' , margin:'0 auto'}}>Protagonistas</Typography>
+                </AccordionSummary >
+                <AccordionDetails  >
+                    {data.characters.items?.map((character:any) =>(
+
+                        <Typography key={character.name}>
+                         <NextLink href={`/${character.resourceURI.replace(/^.+\/characters\//, '')}`} passHref> 
+                            {character.name}
+                            </NextLink>  
+                        </Typography>
+                ))}
+                </AccordionDetails>
+             </Accordion>  
+             <Accordion key='description'expanded={expanded === 2} onChange={handleChange(2)}>
+                <AccordionSummary                
+                  expandIcon={<ExpandMoreIcon/>}
+                  aria-controls="panel1bh-content"
+                  id="panel1bh-header"
+                  >              
+                <Typography sx={{ color: 'text.secondary' , margin:'0 auto'}}>Descripción</Typography>
+                </AccordionSummary >  
+                <AccordionDetails  >       
+
+                <Typography variant="body2" color="text.secondary">
+                    {data.description? data.description : "Sin información"}
+                 </Typography>                
+                </AccordionDetails>
+             </Accordion>  
+            <CardActions sx={{display: "flex", justifyContent:"flex-end"}}>
+                <Button onClick={handleComprar} size="small" variant="contained"  disabled={data.stock == 0}>{data.stock==0? "Sin Stock": "Comprar"} </Button>
+            </CardActions>
         </CardContent>
-        <Grid  display="flex" justifyContent="flex-end" alignSelf='flex-end' alignItems="center">
-        <CardActions >
-            <Button onClick={handleComprar} size="small" variant="contained"  disabled={data.stock == 0}>Comprar </Button>
-        </CardActions>
-        </Grid>
+        {/* <Grid  display="flex" justifyContent="flex-end" alignSelf='flex-end' alignItems="center"> */}
+        {/* </Grid> */}
     </Card>
     )
 }
