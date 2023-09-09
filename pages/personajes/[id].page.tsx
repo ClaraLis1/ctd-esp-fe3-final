@@ -37,33 +37,5 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-/*export const getStaticPaths: GetStaticPaths = async () => {
-  const data: any = await getCharacters();
-
-  const paths = data.map((character: any) => {
-    return { params: { id: character.id.toString() } };
-  });
-
-  return {
-    paths,
-    fallback: true,
-  };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const id = parseInt(params?.id as string);
-  const character = await getCharacter(id);
-
-  return {
-    props: {
-      character
-    },
-    revalidate: 10,
-  };
-};*/
-
-
-
-
 
 export default CharacterPage;

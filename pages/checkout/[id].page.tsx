@@ -7,7 +7,7 @@ import Button from '@mui/material/Button'
 import FormCheckout from 'dh-marvel/components/ui/formCheckout/FormCheckout';
 import {useRef} from 'react'
 import { useRouter } from 'next/router';
-import { GetStaticProps, NextPage, GetStaticPaths } from 'next';
+import { GetStaticProps, NextPage, GetStaticPaths, GetServerSideProps } from 'next';
 import { getComic, getComics } from 'dh-marvel/services/marvel/marvel.service';
 import { Comic } from 'dh-marvel/features/marvel/comic.types';
 import { CardDetail } from 'dh-marvel/components/ui/cardDetail/CardDetail';
@@ -77,68 +77,19 @@ const CheckoutPage:NextPage<Props> = ({comic})=>{
   );
 }
 
-// import Head from "next/head";
-// import { number } from 'yup';
-/*
-const stepper = ()=>{
 
-    const router = useRouter();
-  const [formStep, setFormStep] = useState(0);
-  const { setFormValues } = useContext(FormContext);
-
-  useEffect(() => { router.push(`/?step=${formStep}`), setFormStep(formStep) }, [formStep]);
-  
-  const nextFormStep = (contract='') => {
-    setFormStep(1);
-    setFormValues({ contract });
-  };
-
-
-  const prevFormStep = () => {
-    setFormStep((formStep) => formStep - 1);
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const id = Number(context.params?.id)
+  const data = await getComic(id);
+  return {
+   props:{
+    comic:data,
     
+   }
   };
+};
 
-  const formStepToLast = () => {
-    setFormStep(2);
-  };
-
-  return (
-    <div>
-      <Head>
-        <title>Next.js Multi Step Form</title>
-      </Head>
-     
-        <div className={styles.container}>
-            {formStep >= 0 && (
-              <ContractInfo
-                formStep={formStep}
-                prevFormStep={prevFormStep}
-                nextFormStep={nextFormStep}
-              />
-            )}
-            {formStep >= 1 && (
-              <PersonalInfo
-                formStep={formStep}
-                prevFormStep={prevFormStep}
-                formStepToLast={formStepToLast}
-              />
-            )}
-            {formStep >= 2 && (
-              <ConfirmPurchase
-                formStep={formStep}
-                prevFormStep={prevFormStep}
-                nextFormStep={nextFormStep}
-              />
-            )}  
-        </div>
-    </div>
-  );
-    
-}
-*/
-
-export const getStaticPaths:GetStaticPaths = async () => {
+/*export const getStaticPaths:GetStaticPaths = async () => {
 	const res = await getComics()
     const comics = res?.data?.results || [];
      const paths = comics.map((comic:any) => ({
@@ -167,5 +118,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 		}
 	}
 	
-};
+};*/
 export default CheckoutPage

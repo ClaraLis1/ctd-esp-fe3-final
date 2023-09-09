@@ -41,7 +41,7 @@ export const CardPanel: FC<Props> = ({data}) => {
              alt='imagen de Marvel'
             height="250"
 
-            image={`${data.thumbnail.path}.${data.thumbnail.extension}`}
+            image={`${data?.thumbnail.path}.${data?.thumbnail.extension}`}
             />
         <CardContent sx={{display: "flex", flexDirection: "column", justifyContent:"space-around"}}>                   
             <Typography variant="body2" color="text.secondary">
