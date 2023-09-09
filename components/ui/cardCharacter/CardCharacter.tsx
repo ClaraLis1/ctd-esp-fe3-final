@@ -44,8 +44,8 @@ export const CardCharacter: FC<Props> = ({data}) => {
             component="img"
             alt='imagen de Marvel'
             height="250"
-            // image={imageUrl? imageUrl: ""}
-            image={""}
+            image={`${data.thumbnail.path}.${data.thumbnail.extension}`}
+            // image={""}
             />
         <CardContent sx={{width:"100%"}}>
             <Typography variant="body2" color="text.secondary">
