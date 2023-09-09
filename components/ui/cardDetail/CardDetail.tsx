@@ -50,7 +50,8 @@ export const CardDetail: FC<Props> = ({data}) => {
             component="img"
             alt='imagen de Marvel'
             height="250"
-            image={data.images[0]?`{${data.images[0].path}.${data.images[0].extension}}`:`${data.thumbnail.path}.${data.thumbnail.extension}`}
+            // image={data.images[0]?`{${data.images[0].path}.${data.images[0].extension}}`:`${data.thumbnail.path}.${data.thumbnail.extension}`}
+            image={`${data.thumbnail.path}.${data.thumbnail.extension}`}
             // image={imageUrl? imageUrl: ""}
             />
         <CardContent sx={{width:"100%"}}>

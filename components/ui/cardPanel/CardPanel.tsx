@@ -25,8 +25,7 @@ interface Props{
     data:any
 }
 export const CardPanel: FC<Props> = ({data}) => {
-    const image = data.images[0]      
-     const imageUrl = `${image?.path}.${image?.extension}`
+    
      const router = useRouter()
      
      const handleComprar = () => {       
@@ -42,7 +41,7 @@ export const CardPanel: FC<Props> = ({data}) => {
              alt='imagen de Marvel'
             height="250"
 
-                image={imageUrl? imageUrl: ""}
+            image={`${data.thumbnail.path}.${data.thumbnail.extension}`}
             />
         <CardContent sx={{display: "flex", flexDirection: "column", justifyContent:"space-around"}}>                   
             <Typography variant="body2" color="text.secondary">
