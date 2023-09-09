@@ -3,15 +3,15 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button'
-import FormCheckout from 'dh-marvel/components/ui/formCheckout/FormCheckout';
-import {useRef} from 'react'
-import { useRouter } from 'next/router';
-import { GetStaticProps, NextPage, GetStaticPaths, GetServerSideProps } from 'next';
+import * as yup from "yup";
+import { NextPage, GetServerSideProps } from 'next';
 import { getComic, getComics } from 'dh-marvel/services/marvel/marvel.service';
 import { Comic } from 'dh-marvel/features/marvel/comic.types';
-import { CardDetail } from 'dh-marvel/components/ui/cardDetail/CardDetail';
 import { CardPanel } from 'dh-marvel/components/ui/cardPanel/CardPanel';
+import { FormCheckout } from 'dh-marvel/components/ui/formCheckout/FormCheckout';
+import { schema } from 'dh-marvel/components/ui/formCheckout/rules';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { FormProvider, useForm } from 'react-hook-form';
 
 const steps = [
   'Datos Personales',
@@ -24,27 +24,15 @@ interface Props {
 }
 
 const CheckoutPage:NextPage<Props> = ({comic})=>{
-    const router = useRouter();
-    const [formStep, setFormStep] = React.useState(1);
-    const formRef = useRef<HTMLFormElement | null>(null);
-   
-  
-    /*useEffect(() => { router.push(`/?step=${formStep}`), setFormStep(formStep) }, [formStep]);*/
     
-    const nextFormStep = () => {
-        // if (formRef.current !== null) {
-        //     formRef.current.submit();
-        //   }
-          setFormStep((formStep) => formStep + 1);
-      
-    };
-  
-  
-    const prevFormStep = () => {
-      setFormStep((formStep) => formStep - 1);
-      
-    };
-  
+  type DataForm = yup.InferType<typeof schema>
+
+  const methods = useForm<DataForm>({
+    resolver: yupResolver(schema),
+    defaultValues:{}
+    })
+  const [formStep, setFormStep] = React.useState(2);
+    
    /* const formStepToLast = () => {
       setFormStep(2);
     };*/
@@ -53,7 +41,7 @@ const CheckoutPage:NextPage<Props> = ({comic})=>{
   return (
     <Box sx={{ mt:"20px", width: '100%' ,display:'flex', flexDirection:'column', justifyContent: "space-evenly" }}>
       <Box sx={{ mb:"20px"}}>
-      <CardPanel data={comic} />
+      {/* <CardPanel data={comic} />
       </Box>
       <Box>
       <Stepper activeStep={3} alternativeLabel>
@@ -63,16 +51,12 @@ const CheckoutPage:NextPage<Props> = ({comic})=>{
 
           </Step>
         ))}
-      </Stepper>
-      <FormCheckout 
-            step={formStep}
-            // ref={formRef} 
-            ></FormCheckout>
-      <Box sx={{display:'flex', flexDirection:'row', justifyContent: "space-evenly"}}>
-        <Button size="small" variant="contained" onClick={prevFormStep} disabled={formStep==1}  >anterior </Button>
-        <Button size="small" variant="contained" onClick={nextFormStep} disabled={formStep==3} >siguiente </Button>
-      </Box>
-    </Box>
+      </Stepper> */}
+      <FormProvider {...methods}>
+        <FormCheckout/>
+      </FormProvider>
+     
+     </Box>
     </Box>
   );
 }
@@ -89,34 +73,5 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-/*export const getStaticPaths:GetStaticPaths = async () => {
-	const res = await getComics()
-    const comics = res?.data?.results || [];
-     const paths = comics.map((comic:any) => ({
-     params: { id: comic.id.toString() },
-      }))      
-  return { paths, fallback: false }
-}
 
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {	
-	const id= params?.id;
-	try {
-		const res = await getComic(`${id}`)      
-		
-		return {
-			props: {
-				comic:res,
-			},
-		};
-	} catch (error) {
-		console.error('No se pudo obtener el personaje', error);
-		return {
-			props: {
-				comic: {},
-			}
-		}
-	}
-	
-};*/
 export default CheckoutPage

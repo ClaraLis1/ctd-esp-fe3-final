@@ -13,7 +13,7 @@ import React from 'react';
 const INITIAL_OFFSET = 0;
 const INITIAL_LIMIT = 12;
 
-interface Props{
+interface Props {
    comics: any
    total: number
 }
@@ -85,8 +85,7 @@ export const getServerSideProps = async () => {
 
     return {
          props: {             
-                comics,
-                limit,
+                comics,                
                 total              
          }
      }
