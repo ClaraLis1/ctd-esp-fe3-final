@@ -33,7 +33,7 @@ export const CardDetail: FC<Props> = ({data}) => {
      const imageUrl = `${image?.path}.${image?.extension}`
      const router = useRouter()
      const [expanded, setExpanded] = React.useState<number | false>(false);
-     console.log(data);
+     
      
      const handleComprar = () => {       
                 router.push(`/checkout/${data.id}`);   
@@ -94,7 +94,7 @@ export const CardDetail: FC<Props> = ({data}) => {
                 <AccordionDetails  >       
 
                 <Typography variant="body2" color="text.secondary">
-                    {data.description? data.description : "Sin información"}
+                    {data.textObjects[0]?.text ? data.textObjects[0].text : "Sin información"}
                  </Typography>                
                 </AccordionDetails>
              </Accordion>  
