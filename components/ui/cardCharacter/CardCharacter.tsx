@@ -31,6 +31,7 @@ export const CardCharacter: FC<Props> = ({data}) => {
     //  const image = data.images[0]   
     //  const imageUrl = `${image?.path}.${image?.extension}`
      const router = useRouter()     
+     console.log(data);
      
      const handelVolver = () => {       
                 router.push('/');   
