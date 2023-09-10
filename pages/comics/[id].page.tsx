@@ -4,12 +4,15 @@ import { CardDetail } from "dh-marvel/components/ui/cardDetail/CardDetail";
 import { getComic, getComics } from "dh-marvel/services/marvel/marvel.service";
 import Head from 'next/head';
 import BodySingle from 'dh-marvel/components/layouts/body/single/body-single';
+import { useRouter } from 'next/router';
 
 interface Props {
 	comic: Comic;
 }
 
+
 const ComicPage:NextPage<Props> = ({comic}) => {    
+
 	return (   
         <>
         <Head>

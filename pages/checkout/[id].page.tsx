@@ -13,51 +13,56 @@ import { schema } from 'dh-marvel/components/ui/formCheckout/rules';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 
-const steps = [
-  'Datos Personales',
-  'Dirección de entrega',
-  'Datos del pago',
-];
 
 interface Props {
 	comic: Comic;
+  id: number
 }
 
-const CheckoutPage:NextPage<Props> = ({comic})=>{
+const CheckoutPage:NextPage<Props> = ({comic, id})=>{
+
     
   type DataForm = yup.InferType<typeof schema>
 
   const methods = useForm<DataForm>({
     resolver: yupResolver(schema),
-    defaultValues:{}
+    defaultValues :{
+      /*customer: {
+          name:"",
+          lastName:'',
+          email:'',
+          address: {
+          address1: "",
+          address2: "",
+          city: "",
+          state: "",
+          zipCode: "",},
+      },    
+      card: {
+          number: "",
+          cvc: "",
+          expDate: "",
+          nameOnCard: ""
+      }*/
+  }
     })
-  const [formStep, setFormStep] = React.useState(2);
-    
-   /* const formStepToLast = () => {
-      setFormStep(2);
-    };*/
+  
   
 
   return (
     <Box sx={{ mt:"20px", width: '100%' ,display:'flex', flexDirection:'column', justifyContent: "space-evenly" }}>
-      <Box sx={{ mb:"20px"}}>
-      {/* <CardPanel data={comic} />
-      </Box>
-      <Box>
-      <Stepper activeStep={3} alternativeLabel>
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-
-          </Step>
-        ))}
-      </Stepper> */}
+       <Box sx={{ mb:"20px"}}>
+                    <CardPanel data={comic} />
+                    </Box>
+                   
       <FormProvider {...methods}>
-        <FormCheckout/>
+        <FormCheckout id={id} 
+        comic={comic}
+       />
       </FormProvider>
      
      </Box>
-    </Box>
+   
   );
 }
 
@@ -68,6 +73,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
    props:{
     comic:data,
+    id: id
     
    }
   };

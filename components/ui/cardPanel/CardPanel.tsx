@@ -28,14 +28,14 @@ export const CardPanel: FC<Props> = ({data}) => {
     
      const router = useRouter()
      
-     const handleComprar = () => {       
+     const handleComprar = () => {    
         
         router.push(`/checkout/${data.id}`);   
      };
     
     return (        
      
-    <Card sx={{ margin:"0 auto" , maxWidth :"70%" ,  backgroundColor:"grey", display: "flex", flexDirection: "row"}}>
+    <Card sx={{ margin:"0 auto" , maxWidth :"70%" , height: "80px", backgroundColor:"grey", display: "flex", flexDirection: "row"}}>
         <CardMedia
             component="img"
              alt='imagen de Marvel'
