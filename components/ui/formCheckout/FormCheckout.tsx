@@ -6,13 +6,11 @@ import PersonalData from "./PersonalData";
 import AddressData from "./AddressData";
 import PaymentData from "./PaymentData";
 import { FC, useState } from "react";
-import * as yup from "yup";
-import { useForm, useFormContext } from "react-hook-form";
-import { CardPanel } from "../cardPanel/CardPanel";
+import { useFormContext } from "react-hook-form";
 import { Comic } from "dh-marvel/features/marvel/comic.types";
 import { useRouter } from "next/router";
-import { error, log } from "console";
-import { faHourglass1 } from "@fortawesome/free-solid-svg-icons";
+
+
 
 
 const defaultValues ={
