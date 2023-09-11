@@ -1,15 +1,12 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
 import * as yup from "yup";
 import { NextPage, GetServerSideProps } from 'next';
-import { getComic, getComics } from 'dh-marvel/services/marvel/marvel.service';
+import { getComic } from 'dh-marvel/services/marvel/marvel.service';
 import { Comic } from 'dh-marvel/features/marvel/comic.types';
 import { CardPanel } from 'dh-marvel/components/ui/cardPanel/CardPanel';
 import { FormCheckout } from 'dh-marvel/components/ui/formCheckout/FormCheckout';
-import { schema } from 'dh-marvel/components/ui/formCheckout/rules';
+import { schema, schema1, schema2 } from 'dh-marvel/components/ui/formCheckout/rules';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -25,27 +22,29 @@ const CheckoutPage:NextPage<Props> = ({comic, id})=>{
   type DataForm = yup.InferType<typeof schema>
 
   const methods = useForm<DataForm>({
+    
     resolver: yupResolver(schema),
+    
     defaultValues :{
-      customer: {
-          name:"",
-          lastName:'',
-          email:''
-        },
-      address: {
-          address1: "",
-          address2: "",
-          city: "",
-          state: "",
-          zipCode: ""
-      },    
-      card: {
-          number: "",
-          cvc: "",
-          expDate: "",
-          nameOnCard: ""
-          }
-    }
+      // customer: {
+      //     name:"",
+      //     lastName:'',
+      //     email:''
+      //   },
+      // address: {
+      //     address1: "",
+      //     address2: "",
+      //     city: "",
+      //     state: "",
+      //     zipCode: ""
+      // },    
+      // card: {
+      //     number: "",
+      //     cvc: "",
+      //     expDate: "",
+      //     nameOnCard: ""
+      //     }
+    },
     })
   
   

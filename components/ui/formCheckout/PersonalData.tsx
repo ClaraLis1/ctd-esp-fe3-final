@@ -7,10 +7,12 @@ import { useFormContext } from 'react-hook-form'
 
 const PersonalData = () => {
     const {control, formState:{errors}} =useFormContext()
-
+    console.log({formState:{errors}});
+    
   return (
     <>
-        {/* <form id="1"> */}
+    
+        {/* <form id="1" > */}
             <Box key={"personal"}>
                 <CustomTextField
                     name="customer.name"

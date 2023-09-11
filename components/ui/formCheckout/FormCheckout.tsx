@@ -6,11 +6,12 @@ import PersonalData from "./PersonalData";
 import AddressData from "./AddressData";
 import PaymentData from "./PaymentData";
 import { FC, useState } from "react";
-import { useFormContext } from "react-hook-form";
+import * as yup from "yup";
+import { useForm, useFormContext } from "react-hook-form";
 import { CardPanel } from "../cardPanel/CardPanel";
 import { Comic } from "dh-marvel/features/marvel/comic.types";
 import { useRouter } from "next/router";
-import { log } from "console";
+
 
 const defaultValues ={
     customer: {
@@ -45,40 +46,59 @@ const steps = [
   }
   
 
-export const FormCheckout: FC<Props> = ({id, comic}) => {
-    
+export const FormCheckout: FC<Props> = ({id, comic}) => {  
+
+
     const router = useRouter()  
     const {handleSubmit} =useFormContext()
-    const [formData, setFormData] = useState(defaultValues);
-    const [step, setStep] = useState(1);
+    const [formData, setFormData] = useState({});
+    const [step, setStep] = useState<number>(1);
+    const [status, setStatus] = useState<number>();
     console.log(formData);
     
   
    
-	// const onSubmit1 = (data: any) => {               
-	// 	setFormData({...formData, customer: data})
-	// };
+	const onSubmit1 = (data: any) => {               
+		setFormData({...formData, customer: data})
+	};
 
     const onSubmit = (data: any) => {
         console.log(data);
         
         if(step == 1){
             setFormData({...formData, customer: data})
-            setStep(step + 1 )
+            // setStep(step + 1 )
         }
         if(step == 2){
             setFormData({...formData, address: data})
-            setStep(step + 1 )
+            // setStep(step + 1 )
         }        
         if(step == 3){
-            setFormData({...formData, card: data})
-            
-            const usuarioJSON = JSON.stringify(data);
-            localStorage.setItem("usuario", usuarioJSON);
-            router.push(`/confirmacion-compra/${id}`)       
+            setFormData({...formData, card: data})   
+            validateData()
+            // const usuarioJSON = JSON.stringify(data);
+            // localStorage.setItem("usuario", usuarioJSON);
+            // router.push(`/confirmacion-compra/${id}`)       
         }
         
     };
+
+    const validateData= ()=>{
+        fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout')
+        .then((response) => {
+          setStatus(response.status);
+          return response.json();
+        })
+        .then((data) => {
+          // data contiene la respuesta de la API en formato JSON
+          // Puedes trabajar con los datos aquí según tus necesidades
+          console.log(data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+    
 
   
     const handlePrevStep = ()=>{        
@@ -88,6 +108,7 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
     const handleNextStep = ()=>{    
         setStep(step + 1)
     }
+
 
     
 
@@ -124,7 +145,10 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
                         
                         <Box>
                             {step>1 && <Button  variant="contained" color="primary"sx={{margin: 2}} onClick={handlePrevStep}>Anterior</Button>}
-                            {step<3 && <Button   variant="contained" color="primary"sx={{margin: 2}} onClick={handleNextStep}>Siguiente</Button>}
+                            {step<3 && <Button  type="submit" variant="contained" color="primary"sx={{margin: 2}} onClick={handleNextStep}>Siguiente</Button>}
+                            {/* {step==1 &&  <Button type="submit" variant="contained" color="primary"sx={{margin: 2}}>
+                            siguiente
+                            </Button> } */}
                             {step==3 &&  <Button type="submit" variant="contained" color="primary"sx={{margin: 2}}>
                                 Enviar
                             </Button> }
