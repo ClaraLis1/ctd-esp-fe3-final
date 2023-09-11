@@ -26,9 +26,6 @@ const Index: NextPage<Props> = ({ initialComics, total , page}) => {
     const [currentPage, setCurrentPage] = useState(page);
     const limit = 12
     const router = useRouter();
-    console.log(page);
-    
-   
 
     const handlePageChange = (event: ChangeEvent<unknown>, value: number) => {   
         setCurrentPage(value)     

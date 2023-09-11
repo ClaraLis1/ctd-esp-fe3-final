@@ -14,7 +14,7 @@ const PaymentData = () => {
   return (
     <>
         <CustomTextField
-            name="number"
+            name="card.number"
             label="Numero de Tarjeta"
             type="text"
             control={control}
@@ -22,11 +22,11 @@ const PaymentData = () => {
         />
 
         <Typography variant='caption' color='red'>
-            <ErrorMessage errors={errors} name="number" />
+            <ErrorMessage errors={errors} name="card.number" />
         </Typography>
 
         <CustomTextField
-            name="nameOnCard"
+            name="card.nameOnCard"
             label="Nombre en la Tarjeta"
             type="text"
             control={control}
@@ -34,11 +34,11 @@ const PaymentData = () => {
         />
 
         <Typography variant='caption' color='red'>
-            <ErrorMessage errors={errors} name="nameOnCard" />
+            <ErrorMessage errors={errors} name="card.nameOnCard" />
         </Typography>
 
         <CustomTextField
-            name="cvc"
+            name="card.cvc"
             label="codigo de seguridad cvc"
             type="text"
             control={control}
@@ -46,11 +46,11 @@ const PaymentData = () => {
         />
 
         <Typography variant='caption' color='red'>
-            <ErrorMessage errors={errors} name="cvc" />
+            <ErrorMessage errors={errors} name="card.cvc" />
         </Typography>
 
         <CustomTextField
-            name="expDate"
+            name="card.expDate"
             label="Fecha de expiración"
             type="text"
             control={control}
@@ -58,7 +58,7 @@ const PaymentData = () => {
         />
 
         <Typography variant='caption' color='red'>
-            <ErrorMessage errors={errors} name="expDate" />
+            <ErrorMessage errors={errors} name="card.expDate" />
         </Typography>           
         </>
   )

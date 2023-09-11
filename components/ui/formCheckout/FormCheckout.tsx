@@ -10,6 +10,7 @@ import { useFormContext } from "react-hook-form";
 import { CardPanel } from "../cardPanel/CardPanel";
 import { Comic } from "dh-marvel/features/marvel/comic.types";
 import { useRouter } from "next/router";
+import { log } from "console";
 
 const defaultValues ={
     customer: {
@@ -46,22 +47,37 @@ const steps = [
 
 export const FormCheckout: FC<Props> = ({id, comic}) => {
     
-    const router = useRouter()    
-
+    const router = useRouter()  
     const {handleSubmit} =useFormContext()
     const [formData, setFormData] = useState(defaultValues);
     const [step, setStep] = useState(1);
+    console.log(formData);
+    
   
    
-	const onSubmit1 = (data: any) => {               
-		setFormData({...formData, customer: data})
-	};
+	// const onSubmit1 = (data: any) => {               
+	// 	setFormData({...formData, customer: data})
+	// };
 
     const onSubmit = (data: any) => {
-       setFormData(data)
-       const usuarioJSON = JSON.stringify(data);
-       localStorage.setItem("usuario", usuarioJSON);
-       router.push(`/confirmacion-compra/${id}`)       
+        console.log(data);
+        
+        if(step == 1){
+            setFormData({...formData, customer: data})
+            setStep(step + 1 )
+        }
+        if(step == 2){
+            setFormData({...formData, address: data})
+            setStep(step + 1 )
+        }        
+        if(step == 3){
+            setFormData({...formData, card: data})
+            
+            const usuarioJSON = JSON.stringify(data);
+            localStorage.setItem("usuario", usuarioJSON);
+            router.push(`/confirmacion-compra/${id}`)       
+        }
+        
     };
 
   
@@ -70,15 +86,9 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
     }
 
     const handleNextStep = ()=>{    
-        if(step == 1){            
-            let formulario = document.getElementById('1')   
-            // formulario.onSubmit1()         
-            onSubmit1(formulario)
-        }
         setStep(step + 1)
     }
 
-    console.log(formData);
     
 
 	return (
@@ -110,7 +120,7 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
                   <form onSubmit={handleSubmit(onSubmit)}>                        
                         {step==1 &&<PersonalData />}
                         {step==2 &&<AddressData/>}
-                        {step==3 &&<PaymentData/>} 
+                        {step==3 &&<PaymentData/>}  
                         
                         <Box>
                             {step>1 && <Button  variant="contained" color="primary"sx={{margin: 2}} onClick={handlePrevStep}>Anterior</Button>}

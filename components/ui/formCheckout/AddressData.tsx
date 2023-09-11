@@ -15,7 +15,7 @@ const AddressData = () => {
   return (
     <>
        <CustomTextField
-            name="address1"
+            name="address.address1"
             label="Direccion"
             type="text"
             control={control}
@@ -23,51 +23,51 @@ const AddressData = () => {
         />
 
         <Typography variant='caption' color='red'>
-            <ErrorMessage errors={errors} name="address1" />
+            <ErrorMessage errors={errors} name="address.address1" />
         </Typography>
 
         <CustomTextField
-            name="address2"
+            name="address.address2"
             label="numero"
             type="text"
             control={control}
             defaultValue=""
         />
         <Typography variant='caption' color='red'>
-            <ErrorMessage errors={errors} name="address2" />
+            <ErrorMessage errors={errors} name="address.address2" />
         </Typography>
 
         <CustomTextField
-            name="city"
+            name="address.city"
             label="Ciudad"
             type="text"
             control={control}
             defaultValue=""
         />
         <Typography variant='caption' color='red'>
-            <ErrorMessage errors={errors} name="city" />
+            <ErrorMessage errors={errors} name="address.city" />
         </Typography>
 
         <CustomTextField
-            name="state"
+            name="address.state"
             label="Provincia"
             type="text"
             control={control}
             defaultValue=""
         />
         <Typography variant='caption' color='red'>
-            <ErrorMessage errors={errors} name="state" />
+            <ErrorMessage errors={errors} name="address.state" />
         </Typography>
 
         <CustomTextField
-            name="zipCode"
+            name="address.zipCode"
             label="Codigo Postal"
             type="text"
             control={control}
             defaultValue=""
         />
         <Typography variant='caption' color='red'>
-            <ErrorMessage errors={errors} name="zipCode" />
+            <ErrorMessage errors={errors} name="address.zipCode" />
         </Typography>
 
 

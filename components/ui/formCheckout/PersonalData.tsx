@@ -10,21 +10,21 @@ const PersonalData = () => {
 
   return (
     <>
-        <form id="1">
+        {/* <form id="1"> */}
             <Box key={"personal"}>
                 <CustomTextField
-                    name="name"
+                    name="customer.name"
                     label="Nombre"
                     type="text"
                     control={control}
                     defaultValue=""
                 />
                 <Typography variant='caption' color='red'>
-                    <ErrorMessage errors={errors} name="name" />
+                    <ErrorMessage errors={errors} name="customer.name" />
                 </Typography>
 
                 <CustomTextField
-                    name="lastName"
+                    name="customer.lastName"
                     label="Apellido"
                     type="text"
                     control={control}
@@ -33,11 +33,11 @@ const PersonalData = () => {
 
 
                 <Typography variant='caption' color='red'>
-                    <ErrorMessage errors={errors} name="lastName" />
+                    <ErrorMessage errors={errors} name="customer.lastName" />
                 </Typography>
 
                 <CustomTextField
-                    name="email"
+                    name="customer.email"
                     label="Correo"
                     type="email"
                     control={control}
@@ -45,13 +45,11 @@ const PersonalData = () => {
                 />
 
                 <Typography variant='caption' color='red'>
-                    <ErrorMessage errors={errors} name="email" />
+                    <ErrorMessage errors={errors} name="customer.email" />
                 </Typography>
             </Box>
-            <Button type="submit" variant="contained" color="primary"sx={{margin: 2}}>
-                                Enviar
-            </Button> 
-        </form>
+           
+       {/* </form> */}
     </>
   )
 }

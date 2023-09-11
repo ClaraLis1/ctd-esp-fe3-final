@@ -27,25 +27,27 @@ const CheckoutPage:NextPage<Props> = ({comic, id})=>{
   const methods = useForm<DataForm>({
     resolver: yupResolver(schema),
     defaultValues :{
-      /*customer: {
+      customer: {
           name:"",
           lastName:'',
-          email:'',
-          address: {
+          email:''
+        },
+      address: {
           address1: "",
           address2: "",
           city: "",
           state: "",
-          zipCode: "",},
+          zipCode: ""
       },    
       card: {
           number: "",
           cvc: "",
           expDate: "",
           nameOnCard: ""
-      }*/
-  }
+          }
+    }
     })
+  
   
   
 
@@ -65,7 +67,6 @@ const CheckoutPage:NextPage<Props> = ({comic, id})=>{
    
   );
 }
-
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const id = Number(context.params?.id)
