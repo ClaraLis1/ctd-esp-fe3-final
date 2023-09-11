@@ -7,7 +7,6 @@ import { useFormContext } from 'react-hook-form'
 
 const PersonalData = () => {
     const {control, formState:{errors}} =useFormContext()
-    console.log({formState:{errors}});
     
   return (
     <>

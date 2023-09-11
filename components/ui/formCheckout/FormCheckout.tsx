@@ -1,4 +1,4 @@
-import { Button, Step, StepLabel, Stepper} from "@mui/material";
+import { Alert, Button, Step, StepLabel, Stepper} from "@mui/material";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
@@ -11,6 +11,8 @@ import { useForm, useFormContext } from "react-hook-form";
 import { CardPanel } from "../cardPanel/CardPanel";
 import { Comic } from "dh-marvel/features/marvel/comic.types";
 import { useRouter } from "next/router";
+import { error, log } from "console";
+import { faHourglass1 } from "@fortawesome/free-solid-svg-icons";
 
 
 const defaultValues ={
@@ -53,8 +55,8 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
     const {handleSubmit} =useFormContext()
     const [formData, setFormData] = useState({});
     const [step, setStep] = useState<number>(1);
-    const [status, setStatus] = useState<number>();
-    console.log(formData);
+    const [status, setStatus] = useState('');
+  
     
   
    
@@ -63,42 +65,67 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
 	};
 
     const onSubmit = (data: any) => {
-        console.log(data);
+        // console.log(JSON.stringify(formData));
         
         if(step == 1){
             setFormData({...formData, customer: data})
+            // validateData()
             // setStep(step + 1 )
         }
         if(step == 2){
             setFormData({...formData, address: data})
+            // validateData()
             // setStep(step + 1 )
         }        
         if(step == 3){
             setFormData({...formData, card: data})   
-            validateData()
-            // const usuarioJSON = JSON.stringify(data);
-            // localStorage.setItem("usuario", usuarioJSON);
-            // router.push(`/confirmacion-compra/${id}`)       
-        }
-        
-    };
-
-    const validateData= ()=>{
-        fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout')
+            // fetch('http://localhost:3000/api/checkout', 
+         fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout', 
+        { 
+        method: "POST",
+        body: JSON.stringify(data),       
+        headers:{
+            'Content-Type': 'application/json'
+        }}
+        )
         .then((response) => {
-          setStatus(response.status);
-          return response.json();
+        if(response.status ===200){
+            const usuarioJSON = JSON.stringify(data);
+            localStorage.setItem("usuario", usuarioJSON);
+            router.push(`/confirmacion-compra/${id}`)
+
+        }
+        // if(response.status ===400){
+        //    console.log(response);
+           
+            
+        // }
+        return response.json();
+        
         })
-        .then((data) => {
-          // data contiene la respuesta de la API en formato JSON
-          // Puedes trabajar con los datos aquí según tus necesidades
-          console.log(data);
+        
+        .then((data) => {  
+            setStatus(data.message)      
+        console.log(data);
         })
         .catch((error) => {
-          console.error(error);
-        });
-    }
-    
+            
+        
+        console.error(error);
+        }); 
+
+        // if(status===200){
+        //     const usuarioJSON = JSON.stringify(data);
+        //     localStorage.setItem("usuario", usuarioJSON);
+        //     router.push(`/confirmacion-compra/${id}`)              
+        // }
+           
+                 
+        }
+         
+        
+        
+    };    
 
   
     const handlePrevStep = ()=>{        
@@ -115,7 +142,7 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
 	return (
         <>
            <Box >
-                <Stepper activeStep={step} alternativeLabel>
+                <Stepper activeStep={step-1} alternativeLabel>
                         {steps.map((label) => (
                         <Step key={label}>
                             <StepLabel>{label}</StepLabel>
@@ -141,6 +168,7 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
                   <form onSubmit={handleSubmit(onSubmit)}>                        
                         {step==1 &&<PersonalData />}
                         {step==2 &&<AddressData/>}
+                        {status && <Alert severity="error">{status}</Alert>}                        
                         {step==3 &&<PaymentData/>}  
                         
                         <Box>

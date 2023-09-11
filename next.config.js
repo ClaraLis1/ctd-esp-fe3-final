@@ -5,6 +5,15 @@ const nextConfig = {
     },
     reactStrictMode: true,
     swcMinify: true,
+    async rewrites() {
+        return [
+          {
+            source: '/api/checkout',
+            destination: 'https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout',
+          },
+        ]
+      },
+  
     //
     // Note: configuring pageExtensions also affects _document.js, _app.js,
     // middleware.js as well as files under pages/api/.

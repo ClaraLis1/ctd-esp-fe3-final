@@ -11,9 +11,9 @@ import {
 
 const serverError = 'error'
 export const invalidAddress = 'invalid'
-export const validCard = '4242 4242 4242 4242'.replace(" ", "");
-export const withoutFundsCard = '4111 4111 4111 4111'.replace(" ", "");
-export const withoutAuthorizationCard = '4000 4000 4000 4000'.replace(" ", "");
+export const validCard = '4242 4242 4242 4242'.replaceAll(" ", "");
+export const withoutFundsCard = '4111 4111 4111 4111'.replaceAll(" ", "");
+export const withoutAuthorizationCard = '4000 4000 4000 4000'.replaceAll(" ", "");
 
 type Data = {
     data: any;
@@ -24,14 +24,17 @@ type Data = {
 
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-
+    console.log(req.body.card.number);
+    console.log(validCard);
+    
+    
     if (req.method !== "POST") {
         res.status(405).json(ERROR_METHOD_NOT_ALLOWED);
         return;
     }
     try {
         const body: CheckoutInput = req.body;
-        if (body.customer.address.address2 === invalidAddress) {
+        if (body.address.address2 === invalidAddress) {
             res.status(400).json(ERROR_INCORRECT_ADDRESS);
             return
         }
@@ -43,7 +46,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
             res.status(400).json(ERROR_CARD_WITHOUT_AUTHORIZATION);
             return
         }
-        if (body.card.number === validCard) {
+        if (body.card.number == validCard) {
             res.status(200).json({data: body});
             return
         }
