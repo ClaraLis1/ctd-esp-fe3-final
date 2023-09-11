@@ -29,11 +29,9 @@ const ConfirmationOrder:NextPage<Props>= ({comic, id}) => {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <BodySingle title={"Gracias por su compra!!"}>
-
 					    <CardPanel data={comic} />
                         <Button onClick={handelVolver} size="small" variant="contained" >Volver </Button>
-
-             </BodySingle>   
+            </BodySingle>   
            
         </>
     );

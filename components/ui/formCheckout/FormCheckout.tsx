@@ -40,25 +40,19 @@ const steps = [
 
   interface Props{
     id:number
-    comic: Comic
- 
+    comic: Comic 
   }
   
 
 export const FormCheckout: FC<Props> = ({id, comic}) => {
     
-    const router = useRouter()
-    
+    const router = useRouter()    
 
     const {handleSubmit} =useFormContext()
     const [formData, setFormData] = useState(defaultValues);
     const [step, setStep] = useState(1);
-
-    
-   const formStepToLast = () => {
-      setStep(step);
-    };
-
+  
+   
 	const onSubmit1 = (data: any) => {               
 		setFormData({...formData, customer: data})
 	};
@@ -76,7 +70,11 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
     }
 
     const handleNextStep = ()=>{    
-   
+        if(step == 1){            
+            let formulario = document.getElementById('1')   
+            // formulario.onSubmit1()         
+            onSubmit1(formulario)
+        }
         setStep(step + 1)
     }
 
@@ -85,7 +83,7 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
 
 	return (
         <>
-           <Box>
+           <Box >
                 <Stepper activeStep={step} alternativeLabel>
                         {steps.map((label) => (
                         <Step key={label}>
@@ -94,7 +92,7 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
                         ))}
                </Stepper>
             </Box>
-            <Box sx={{maxWidth: "500px"}}>
+            <Box sx={{maxWidth: "500px", margin: "0 auto"}}>
                 <Paper
                     elevation={1}
                     sx={{p: "32px", display: "flex", flexDirection: "column", gap: 3}}
@@ -110,13 +108,13 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
                     </Typography>}                
 
                   <form onSubmit={handleSubmit(onSubmit)}>                        
-                        {step==1 &&<PersonalData/>}
+                        {step==1 &&<PersonalData />}
                         {step==2 &&<AddressData/>}
                         {step==3 &&<PaymentData/>} 
                         
                         <Box>
                             {step>1 && <Button  variant="contained" color="primary"sx={{margin: 2}} onClick={handlePrevStep}>Anterior</Button>}
-                            {step<3 && <Button  variant="contained" color="primary"sx={{margin: 2}} onClick={handleNextStep}>Siguiente</Button>}
+                            {step<3 && <Button   variant="contained" color="primary"sx={{margin: 2}} onClick={handleNextStep}>Siguiente</Button>}
                             {step==3 &&  <Button type="submit" variant="contained" color="primary"sx={{margin: 2}}>
                                 Enviar
                             </Button> }

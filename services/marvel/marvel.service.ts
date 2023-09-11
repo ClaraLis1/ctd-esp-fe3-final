@@ -9,7 +9,7 @@ const fetchApi = async (endpoint: string, urlParams?: string) => {
     return await response.json();
 }
 
-export const getComics = async (offset?: number, limit?: number) => {
+export const getComics = async (offset?: number|string, limit?: number|string) => {
     const params = new URLSearchParams();
     if (offset) params.set("offset", `${offset}`);
     if (limit) params.set("limit", `${limit}`);

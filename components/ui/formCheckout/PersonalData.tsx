@@ -1,5 +1,5 @@
 import { ErrorMessage } from '@hookform/error-message'
-import { Box, Typography } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import React from 'react'
 import { CustomTextField } from './inputs/CustomTextFields'
 import { useFormContext } from 'react-hook-form'
@@ -10,44 +10,48 @@ const PersonalData = () => {
 
   return (
     <>
-        <Box key={"personal"}>
-            <CustomTextField
-                name="name"
-                label="Nombre"
-                type="text"
-                control={control}
-                defaultValue=""
-            />
+        <form id="1">
+            <Box key={"personal"}>
+                <CustomTextField
+                    name="name"
+                    label="Nombre"
+                    type="text"
+                    control={control}
+                    defaultValue=""
+                />
+                <Typography variant='caption' color='red'>
+                    <ErrorMessage errors={errors} name="name" />
+                </Typography>
 
-            <Typography variant='caption' color='red'>
-                <ErrorMessage errors={errors} name="name" />
-            </Typography>
-
-            <CustomTextField
-                name="lastName"
-                label="Apellido"
-                type="text"
-                control={control}
-                defaultValue=""
-            />
+                <CustomTextField
+                    name="lastName"
+                    label="Apellido"
+                    type="text"
+                    control={control}
+                    defaultValue=""
+                />
 
 
-            <Typography variant='caption' color='red'>
-                <ErrorMessage errors={errors} name="lastName" />
-            </Typography>
+                <Typography variant='caption' color='red'>
+                    <ErrorMessage errors={errors} name="lastName" />
+                </Typography>
 
-            <CustomTextField
-                name="email"
-                label="Correo"
-                type="email"
-                control={control}
-                defaultValue=""
-            />
+                <CustomTextField
+                    name="email"
+                    label="Correo"
+                    type="email"
+                    control={control}
+                    defaultValue=""
+                />
 
-            <Typography variant='caption' color='red'>
-                <ErrorMessage errors={errors} name="email" />
-            </Typography>
-        </Box>
+                <Typography variant='caption' color='red'>
+                    <ErrorMessage errors={errors} name="email" />
+                </Typography>
+            </Box>
+            <Button type="submit" variant="contained" color="primary"sx={{margin: 2}}>
+                                Enviar
+            </Button> 
+        </form>
     </>
   )
 }
