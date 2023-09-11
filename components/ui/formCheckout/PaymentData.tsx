@@ -16,9 +16,9 @@ const PaymentData = () => {
         <CustomTextField
             name="card.number"
             label="Numero de Tarjeta"
-            type="text"
+            type="text"            
             control={control}
-            defaultValue=""
+            defaultValue="4242424242424242"
         />
 
         <Typography variant='caption' color='red'>

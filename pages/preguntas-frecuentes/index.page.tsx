@@ -59,29 +59,4 @@ export default Index
      }
  }
 
-// export const getStaticProps = async () => {
-//   try {
-//     const response = await fetch("https://ctd-esp-fe3-final-claralisle.vercel.app/api/faqs")
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! Status: ${response.status}`);
-//     }
-
-//     const faqs = await response.json();
-//     console.log(faqs);
-    
-
-//     return {
-//       props: {
-//         faqs,
-//       },
-//     };
-//   } catch (error) {
-//     console.error("Error en getStaticProps:", error);
-//     return {
-//       props: {
-//         faqs: [], 
-//       },
-//     };
-//   }
-
 

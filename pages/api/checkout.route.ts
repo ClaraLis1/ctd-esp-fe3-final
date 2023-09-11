@@ -24,8 +24,7 @@ type Data = {
 
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-    console.log(req.body.card.number);
-    console.log(validCard);
+   
     
     
     if (req.method !== "POST") {
@@ -52,7 +51,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
         }
         res.status(400).json(ERROR_CARD_DATA_INCORRECT);
     } catch (err) {
-        console.log(err);
+        
         res.status(500).json(ERROR_SERVER);
     }
 

@@ -62,8 +62,7 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
 		setFormData({...formData, customer: data})
 	};
 
-    const onSubmit = (data: any) => {
-        // console.log(JSON.stringify(formData));
+    const onSubmit = (data: any) => {      
         
         if(step == 1){
             setFormData({...formData, customer: data})
@@ -77,8 +76,8 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
         }        
         if(step == 3){
             setFormData({...formData, card: data})   
-            // fetch('http://localhost:3000/api/checkout', 
-         fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout', 
+        fetch('http://localhost:3000/api/checkout', 
+        //  fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout', 
         { 
         method: "POST",
         body: JSON.stringify(data),       
@@ -88,28 +87,32 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
         )
         .then((response) => {
         if(response.status ===200){
-            const usuarioJSON = JSON.stringify(data);
-            localStorage.setItem("usuario", usuarioJSON);
+            const nombre = JSON.stringify(data.customer.name);
+            const apellido = JSON.stringify(data.customer.lastName);
+            const direccion = JSON.stringify(data.address.address1);
+            const ciudad = JSON.stringify(data.address.city);
+            const provincia = JSON.stringify(data.address.state);
+            localStorage.setItem("nombre", nombre);
+            localStorage.setItem("apellido", apellido);
+            localStorage.setItem("direccion", direccion);
+            localStorage.setItem("ciudad", ciudad);
+            localStorage.setItem("provincia", provincia);
             router.push(`/confirmacion-compra/${id}`)
 
         }
-        // if(response.status ===400){
-        //    console.log(response);
-           
-            
-        // }
+       
         return response.json();
         
         })
         
         .then((data) => {  
             setStatus(data.message)      
-        console.log(data);
+      
         })
         .catch((error) => {
             
         
-        console.error(error);
+      
         }); 
 
         // if(status===200){
