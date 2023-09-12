@@ -30,10 +30,7 @@ const CardConfirm: FC<Props>= (props) => {
           <Typography gutterBottom variant="h5" component="div">
             {props.data.title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
+          
         </CardContent>
       </CardActionArea>
     </Card>
@@ -44,7 +41,7 @@ const CardConfirm: FC<Props>= (props) => {
             Comic: {props.data.title}
           </Typography>
           <Typography variant="body2" sx={{ fontSize: 18 }} color="text.secondary">
-            precio: {props.data.price}
+            precio: ${props.data.price}
           </Typography>
           <Typography sx={{marginTop: "10px"}}gutterBottom variant="h5" component="div">
             Datos de envio

@@ -74,8 +74,11 @@ const ConfirmationOrder:NextPage<Props>= ({comic, id}) => {
             </BodySingle>           
             </>:
             <>
-                <h1>Pagina no disponible</h1>
+            <BodySingle title={"Pagina no disponible"}>
+              
                 <Button onClick={handelVolver} size="small" variant="contained" sx={{width: "200px", margin:"0 auto" ,mt:"10px", mb:"10px"}} >Volver a Home</Button>
+
+            </BodySingle>
             </>
             }
         </>
