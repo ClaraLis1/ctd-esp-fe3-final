@@ -1,31 +1,18 @@
 import { FC } from "react"
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
 import { useRouter } from "next/router";
-
-
-interface Comic{
-    images: []
-    title: string
-    id: number
-}
-
-interface Image{
-    path: string
-    extension: string
-}
+import { ComicData } from "dh-marvel/features/marvel/comic.types";
 
 interface Props{
-    data:any
+    data:ComicData
 }
+
 export const CardPanel: FC<Props> = ({data}) => {
-    
+  
      const router = useRouter()
      
      const handleComprar = () => {    

@@ -7,15 +7,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import { ImagesearchRoller } from "@mui/icons-material";
 import { useRouter } from "next/router";
-import Link from "next/link";
 
-interface Comic{
-    images: []
-    title: string
-    id: number
-}
 
 interface Image{
     path: string
@@ -27,19 +20,18 @@ interface Props{
     key: number
     title:string
     image: Image | undefined 
+    
 }
 export const CardComic: FC<Props> = ({title, image, id}) => {
+  
+    
     const router = useRouter()
     const imageUrl = `${image?.path}.${image?.extension}`
     const handlePageChange = () => {       
         
         router.push(`/comics/${id}`);   
      };
-
-     const handleComprar = () => {   
-        
-        router.push(`/checkout`);   
-     };
+  
     
     return (
         
@@ -59,8 +51,8 @@ export const CardComic: FC<Props> = ({title, image, id}) => {
         </CardContent>
         <Grid  display="flex" justifyContent="flex-end" alignSelf='flex-end' alignItems="center">
         <CardActions >
-            <Button onClick={handlePageChange}size="small" variant="contained" >Comprar </Button>
-            <Button onClick={handlePageChange} size="small" variant="contained" >Ver Detalle</Button>
+            <Button onClick={handlePageChange}size="small" variant="contained" sx={{backgroundColor:"#ed1d24"}}>Comprar</Button>                 
+            <Button onClick={handlePageChange} size="small" variant="contained"sx={{backgroundColor:"#ed1d24"}} >Ver Detalle</Button>
         </CardActions>
         </Grid>
     </Card>

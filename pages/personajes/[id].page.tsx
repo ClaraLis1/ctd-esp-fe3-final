@@ -1,11 +1,12 @@
-import { GetStaticProps, NextPage, GetStaticPaths, GetServerSideProps } from 'next';
-import { getCharacter, getCharacters } from "dh-marvel/services/marvel/marvel.service";
+import {  NextPage,  GetServerSideProps } from 'next';
+import { getCharacter } from "dh-marvel/services/marvel/marvel.service";
 import Head from 'next/head';
 import BodySingle from 'dh-marvel/components/layouts/body/single/body-single';
 import { CardCharacter } from 'dh-marvel/components/ui/cardCharacter/CardCharacter';
+import {  CharacterDataResult } from 'dh-marvel/features/marvel/character.types';
 
 interface Props {
-	character: any
+	character: CharacterDataResult
     id: number|string
 }
 

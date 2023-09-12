@@ -6,12 +6,12 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
 import { useRouter } from "next/router";
 import { Accordion, AccordionSummary } from '@mui/material';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import NextLink from 'next/link'
+import { ComicData } from "dh-marvel/features/marvel/comic.types";
 
 
 interface Comic{
@@ -26,7 +26,7 @@ interface Image{
 }
 
 interface Props{
-    data:any
+    data:ComicData
 }
 export const CardDetail: FC<Props> = ({data}) => {
     const image = data.images[0]      
@@ -101,9 +101,7 @@ export const CardDetail: FC<Props> = ({data}) => {
             <CardActions sx={{display: "flex", justifyContent:"flex-end"}}>
                 <Button onClick={handleComprar} size="small" variant="contained"  disabled={data.stock == 0}>{data.stock==0? "Sin Stock": "Comprar"} </Button>
             </CardActions>
-        </CardContent>
-        {/* <Grid  display="flex" justifyContent="flex-end" alignSelf='flex-end' alignItems="center"> */}
-        {/* </Grid> */}
+        </CardContent>       
     </Card>
     )
 }

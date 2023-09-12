@@ -29,6 +29,7 @@
     "md5": "^2.3.0",
     "next": "12.2.5",
     "react": "18.2.0",
+    "react-credit-cards-2": "^1.0.1",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.46.1",
     "yup": "^1.2.0"

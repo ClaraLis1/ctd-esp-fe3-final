@@ -7,32 +7,9 @@ import AddressData from "./AddressData";
 import PaymentData from "./PaymentData";
 import { FC, useState } from "react";
 import { useFormContext } from "react-hook-form";
-import { Comic } from "dh-marvel/features/marvel/comic.types";
+import { ComicData } from "dh-marvel/features/marvel/comic.types";
 import { useRouter } from "next/router";
 
-
-
-
-const defaultValues ={
-    customer: {
-        name:"",
-        lastName:'',
-        email:''
-    },
-    address: {
-        address1: "",
-        address2: "",
-        city: "",
-        state: "",
-        zipCode: "",
-    },    
-    card: {
-        number: "",
-        cvc: "",
-        expDate: "",
-        nameOnCard: ""
-    }
-}
 
 const steps = [
     'Datos Personales',
@@ -42,42 +19,31 @@ const steps = [
 
   interface Props{
     id:number
-    comic: Comic 
+    comic: ComicData 
   }
   
 
-export const FormCheckout: FC<Props> = ({id, comic}) => {  
-
-
+export const FormCheckout: FC<Props> = ({id, comic}) => { 
     const router = useRouter()  
     const {handleSubmit} =useFormContext()
     const [formData, setFormData] = useState({});
     const [step, setStep] = useState<number>(1);
     const [status, setStatus] = useState('');
   
-    
-  
-   
-	const onSubmit1 = (data: any) => {               
-		setFormData({...formData, customer: data})
-	};
-
     const onSubmit = (data: any) => {      
         
         if(step == 1){
             setFormData({...formData, customer: data})
-            // validateData()
-            // setStep(step + 1 )
+            
         }
         if(step == 2){
             setFormData({...formData, address: data})
-            // validateData()
-            // setStep(step + 1 )
+           
         }        
         if(step == 3){
-            setFormData({...formData, card: data})   
-        //  fetch('http://localhost:3000/api/checkout', 
-        fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout', 
+        setFormData({...formData, card: data})   
+         fetch('http://localhost:3000/api/checkout', 
+        // fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout', 
         { 
         method: "POST",
         body: JSON.stringify({...data, comic:comic.id}),       
@@ -98,7 +64,6 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
             localStorage.setItem("ciudad", ciudad);
             localStorage.setItem("provincia", provincia);
             router.push(`/confirmacion-compra/${id}`)
-
         }
        
         return response.json();
@@ -109,23 +74,11 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
             setStatus(data.message)      
       
         })
-        .catch((error) => {
-            
-        
+        .catch((error) => {           
+            console.log(error);         
       
         }); 
-
-        // if(status===200){
-        //     const usuarioJSON = JSON.stringify(data);
-        //     localStorage.setItem("usuario", usuarioJSON);
-        //     router.push(`/confirmacion-compra/${id}`)              
-        // }
-           
-                 
         }
-         
-        
-        
     };    
 
   
@@ -137,8 +90,7 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
         setStep(step + 1)
     }
 
-
-    
+ 
 
 	return (
         <>
@@ -169,15 +121,12 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
                   <form onSubmit={handleSubmit(onSubmit)}>                        
                         {step==1 &&<PersonalData />}
                         {step==2 &&<AddressData/>}
-                        {status && <Alert severity="error">{status}</Alert>}                        
+                        {status && <Alert severity="error">{status}</Alert>} 
                         {step==3 &&<PaymentData/>}  
                         
                         <Box>
                             {step>1 && <Button  variant="contained" color="primary"sx={{margin: 2}} onClick={handlePrevStep}>Anterior</Button>}
                             {step<3 && <Button  type="submit" variant="contained" color="primary"sx={{margin: 2}} onClick={handleNextStep}>Siguiente</Button>}
-                            {/* {step==1 &&  <Button type="submit" variant="contained" color="primary"sx={{margin: 2}}>
-                            siguiente
-                            </Button> } */}
                             {step==3 &&  <Button type="submit" variant="contained" color="primary"sx={{margin: 2}}>
                                 Enviar
                             </Button> }

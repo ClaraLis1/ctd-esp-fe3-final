@@ -1,9 +1,8 @@
 import {  GetServerSideProps, NextPage} from 'next';
 import Head from 'next/head';
 import BodySingle from 'dh-marvel/components/layouts/body/single/body-single';
-import { getCharacter, getComic } from 'dh-marvel/services/marvel/marvel.service';
-import { CardPanel } from 'dh-marvel/components/ui/cardPanel/CardPanel';
-import { Comic } from 'dh-marvel/features/marvel/comic.types';
+import { getComic } from 'dh-marvel/services/marvel/marvel.service';
+import { Comic, ComicData } from 'dh-marvel/features/marvel/comic.types';
 import { useRouter } from 'next/router';
 import { Box, Button } from '@mui/material';
 import { useEffect, useState } from 'react';
@@ -11,7 +10,7 @@ import CardConfirm from 'dh-marvel/components/ui/cardConfirm/CardConfirm';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 
 interface Props{
-    comic: Comic
+    comic: ComicData
     id: number
 }
 
@@ -72,11 +71,13 @@ const ConfirmationOrder:NextPage<Props>= ({comic, id}) => {
 
                 </Box>
                         <Button onClick={handelVolver} size="small" variant="contained" sx={{width: "200px", margin:"0 auto" ,mt:"10px", mb:"10px"}} >Volver </Button>
-            </BodySingle>  
-
-         
+            </BodySingle>           
             </>:
-            <h1>Pagina no disponible</h1>}
+            <>
+                <h1>Pagina no disponible</h1>
+                <Button onClick={handelVolver} size="small" variant="contained" sx={{width: "200px", margin:"0 auto" ,mt:"10px", mb:"10px"}} >Volver a Home</Button>
+            </>
+            }
         </>
     );
 };

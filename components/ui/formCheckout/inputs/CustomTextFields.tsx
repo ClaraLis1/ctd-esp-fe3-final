@@ -29,7 +29,7 @@ export const CustomTextField = ({
       name={name}
       control={control}
       defaultValue={defaultValue}
-      render={({ field }) => (
+         render={({ field }) => (
         <TextField
           {...field}
           type={type}
@@ -37,8 +37,6 @@ export const CustomTextField = ({
           variant="outlined"
           fullWidth
           required={required}
-          // error={error}
-          // helperText={message}
           sx={{ mb: 2 }}
           {...textFieldProps}
         />

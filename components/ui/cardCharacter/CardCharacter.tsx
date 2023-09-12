@@ -7,29 +7,12 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useRouter } from "next/router";
-import { Accordion, AccordionSummary } from '@mui/material';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import NextLink from 'next/link'
-
-
-interface Comic{
-    images: []
-    title: string
-    id: number
-}
-
-interface Image{
-    path: string
-    extension: string
-}
+import { CharacterDataResult } from "dh-marvel/features/marvel/character.types";
 
 interface Props{
-    data:any
+    data: CharacterDataResult
 }
 export const CardCharacter: FC<Props> = ({data}) => {
-    //  const image = data.images[0]   
-    //  const imageUrl = `${image?.path}.${image?.extension}`
      const router = useRouter()     
    
      

@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import * as yup from "yup";
 import { NextPage, GetServerSideProps } from 'next';
 import { getComic } from 'dh-marvel/services/marvel/marvel.service';
-import { Comic } from 'dh-marvel/features/marvel/comic.types';
+import { Comic, ComicData } from 'dh-marvel/features/marvel/comic.types';
 import { CardPanel } from 'dh-marvel/components/ui/cardPanel/CardPanel';
 import { FormCheckout } from 'dh-marvel/components/ui/formCheckout/FormCheckout';
 import { schema, schema1, schema2 } from 'dh-marvel/components/ui/formCheckout/rules';
@@ -12,7 +12,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 
 interface Props {
-	comic: Comic;
+	comic: ComicData;
   id: number
 }
 

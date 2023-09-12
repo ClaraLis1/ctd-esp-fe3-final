@@ -1,5 +1,5 @@
 import { GetStaticProps, NextPage, GetStaticPaths } from 'next';
-import { Comic } from "dh-marvel/features/marvel/comic.types";
+import { Comic, ComicData } from "dh-marvel/features/marvel/comic.types";
 import { CardDetail } from "dh-marvel/components/ui/cardDetail/CardDetail";
 import { getComic, getComics } from "dh-marvel/services/marvel/marvel.service";
 import Head from 'next/head';
@@ -7,7 +7,7 @@ import BodySingle from 'dh-marvel/components/layouts/body/single/body-single';
 import { useRouter } from 'next/router';
 
 interface Props {
-	comic: Comic;
+	comic: ComicData;
 }
 
 
@@ -30,7 +30,7 @@ const ComicPage:NextPage<Props> = ({comic}) => {
 export const getStaticPaths:GetStaticPaths = async () => {
 	const res = await getComics()
     const comics = res?.data?.results || [];
-     const paths = comics.map((comic:any) => ({
+     const paths = comics.map((comic:Comic) => ({
      params: { id: comic.id.toString() },
       }))      
   return { paths, fallback: false }
@@ -40,7 +40,7 @@ export const getStaticPaths:GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {	
 	const id= params?.id;
 	try {
-		const res = await getComic(`${id}`)      
+		const res = await getComic(`${id}`)     
 		
 		return {
 			props: {
