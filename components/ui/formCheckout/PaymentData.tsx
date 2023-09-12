@@ -40,7 +40,7 @@ const PaymentData = () => {
         <CustomTextField
             name="card.cvc"
             label="codigo de seguridad cvc"
-            type="text"
+            type="password"
             control={control}
             defaultValue=""
         />
