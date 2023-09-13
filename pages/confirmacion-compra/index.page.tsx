@@ -57,7 +57,7 @@ const ConfirmationOrder:NextPage<Props>= ({comic, id}) => {
 
 	return (   
         <>
-             {info!= undefined ?
+             {(info!= null || info != undefined)?
             <> 
         <Head>
             <title>DH-Marvel Store</title>
