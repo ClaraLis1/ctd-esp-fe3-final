@@ -40,9 +40,10 @@ const Index: NextPage<Props> = ({ initialComics, total , page}) => {
 
           {/* <Pagination count={Math.ceil(total / LIMIT)}  /> */}
           <Pagination count={Math.ceil(total / limit)} onChange={handlePageChange} sx={{ margin:"0 auto"}} />
-          <Box sx={{ flexGrow: 1 }}>
-               
-                 <Grid sx={{margin: 5}} container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+
+          <Box sx={{ flexGrow: 1 }}>              
+         
+                 <Grid sx={{margin: 5}} container spacing={{ xs: 2, md: 3 }} columns={{ xs: 1, sm: 8, md: 12 }}>
                     {initialComics.map((comic:any)=>(
                                            
                         <Grid item xs={2} sm={4} md={4} key={comic.id}>
@@ -54,8 +55,8 @@ const Index: NextPage<Props> = ({ initialComics, total , page}) => {
                             ></CardComic>                          
                         </Grid>
                     ))}
-                </Grid> 
-                </Box>
+                </Grid>
+           </Box>
           </BodySingle>
        
       </>

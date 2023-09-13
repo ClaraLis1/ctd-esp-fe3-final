@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { useRouter } from "next/router";
+import { Stack } from "@mui/material";
 
 
 interface Image{
@@ -49,12 +50,14 @@ export const CardComic: FC<Props> = ({title, image, id}) => {
             {title}
             </Typography>
         </CardContent>
+       
         <Grid  display="flex" justifyContent="flex-end" alignSelf='flex-end' alignItems="center">
-        <CardActions >
-            <Button onClick={handlePageChange}size="small" variant="contained" sx={{backgroundColor:"#ed1d24"}}>Comprar</Button>                 
-            <Button onClick={handlePageChange} size="small" variant="contained"sx={{backgroundColor:"#ed1d24"}} >Ver Detalle</Button>
-        </CardActions>
+            <CardActions >
+                    <Button onClick={handlePageChange}size="small" variant="contained" sx={{backgroundColor:"#ed1d24"}}>Comprar</Button>                 
+                        <Button onClick={handlePageChange} size="small" variant="contained"sx={{backgroundColor:"#ed1d24"}} >Ver Detalle</Button>
+            </CardActions>
         </Grid>
+       
     </Card>
     )
 }

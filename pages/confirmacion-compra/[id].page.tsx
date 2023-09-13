@@ -2,7 +2,7 @@ import {  GetServerSideProps, NextPage} from 'next';
 import Head from 'next/head';
 import BodySingle from 'dh-marvel/components/layouts/body/single/body-single';
 import { getComic } from 'dh-marvel/services/marvel/marvel.service';
-import { Comic, ComicData } from 'dh-marvel/features/marvel/comic.types';
+import { ComicData } from 'dh-marvel/features/marvel/comic.types';
 import { useRouter } from 'next/router';
 import { Box, Button } from '@mui/material';
 import { useEffect, useState } from 'react';
@@ -59,6 +59,7 @@ const ConfirmationOrder:NextPage<Props>= ({comic, id}) => {
             </Head>
             <BodySingle title={"¡Que disfrutes de tu compra!"}>
             <TaskAltIcon color="success" sx={{ margin: "0 auto", fontSize: "100px"}}></TaskAltIcon>
+            
                 <Box sx={{display: "flex", flexDirection: "row", justifyContent: "space-around"}}>
 					    <CardConfirm 
                         data={comic} 

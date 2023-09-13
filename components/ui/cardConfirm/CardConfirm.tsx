@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { Box, CardActionArea } from '@mui/material';
 
@@ -17,7 +18,7 @@ interface Props{
 const CardConfirm: FC<Props>= (props) => {
   return (
     <>
-   
+    {/* <Grid sx={{margin: "0 auto"}} container spacing={{ xs: 2 }} columns={{ xs: 6  xs:6  }}> */}
      <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardMedia
@@ -34,8 +35,7 @@ const CardConfirm: FC<Props>= (props) => {
         </CardContent>
       </CardActionArea>
     </Card>
-    <Box sx={{ maxWidth: 345 }}>
-      
+    <Box sx={{ maxWidth: 345 }}>     
         
           <Typography gutterBottom variant="h5" component="div">
             Comic: {props.data.title}
@@ -59,7 +59,8 @@ const CardConfirm: FC<Props>= (props) => {
             Provincia: {props.provincia}
           </Typography>
         
-    </Box>
+       </Box>
+    {/* </Grid> */}
     </>
   )
 }
