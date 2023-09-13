@@ -46,8 +46,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
             return
         }
         if (body.card.number == validCard) {
-             res.setHeader("set-cookie", "Access=true; path=/confirmacion-compra; samesite=lax; httponly")   
-             res.status(200).json({data: body});
+            // res.setHeader("Set-Cookie", 'Access=true; path=/confirmacion-compra; samesite=lax; httponly; expires=0;')   
+            res.status(200).json({data: body});
             return
         }
         res.status(400).json(ERROR_CARD_DATA_INCORRECT);

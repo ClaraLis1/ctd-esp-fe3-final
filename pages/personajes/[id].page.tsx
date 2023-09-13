@@ -21,6 +21,7 @@ const CharacterPage:NextPage<Props> = ({character, id}) => {
             </Head>
             <BodySingle title={"Personaje"}>
 					    <CardCharacter data={character} />
+                       
              </BodySingle>   
            
         </>

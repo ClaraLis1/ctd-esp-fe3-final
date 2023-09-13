@@ -31,6 +31,11 @@ export const CardComic: FC<Props> = ({title, image, id}) => {
         
         router.push(`/comics/${id}`);   
      };
+
+     const handlePageCheckout = () => {       
+        
+        router.push(`/checkout/${id}`);   
+     };
   
     
     return (
@@ -52,8 +57,9 @@ export const CardComic: FC<Props> = ({title, image, id}) => {
        
         <Grid  display="flex" justifyContent="flex-end" alignSelf='flex-end' alignItems="center">
             <CardActions >
+                    <Button onClick={handlePageCheckout}size="small" variant="contained" sx={{backgroundColor:"#ed1d24"}}>Compra ya!</Button>                 
                     <Button onClick={handlePageChange}size="small" variant="contained" sx={{backgroundColor:"#ed1d24"}}>Comprar</Button>                 
-                        <Button onClick={handlePageChange} size="small" variant="contained"sx={{backgroundColor:"#ed1d24"}} >Ver Detalle</Button>
+                    <Button onClick={handlePageChange} size="small" variant="contained"sx={{backgroundColor:"#ed1d24"}} >Ver Detalle</Button>
             </CardActions>
         </Grid>
        

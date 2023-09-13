@@ -11,6 +11,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import{useEffect} from 'react'
+import { Typography } from '@mui/material';
 
 
 interface Props {
@@ -33,25 +34,29 @@ const CheckoutPage:NextPage<Props> = ({comic, id})=>{
   
 
       
-      
-        React.useEffect(() => {
-          if (comic.stock==0) 
-          router.push('/');
-        }, []);
-
-  
+       
 
   return (
     <Box sx={{ mt:"20px", width: '100%' ,display:'flex', flexDirection:'column', justifyContent: "space-evenly" }}>
        <Box sx={{ mb:"20px"}}>
-                    <CardPanel data={comic} />
-                    </Box>
-                   
+         <CardPanel data={comic} />
+      </Box>
+      {comic.stock !==0 ?<>
+
       <FormProvider {...methods}>
         <FormCheckout id={id} 
         comic={comic}
        />
       </FormProvider>
+      </>:
+        <>
+        <Box sx={{margin:'0 auto'}}>
+          <Typography >
+            Lo sentimos, no hay stock disponible por el momento...
+          </Typography>
+        </Box>
+        </>
+      }             
      
      </Box>
    
