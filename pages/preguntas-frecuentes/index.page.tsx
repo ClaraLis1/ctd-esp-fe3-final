@@ -20,7 +20,7 @@ const Index: NextPage<Props> = ({faqs}) => {
       
         
     return (      
-      <BodySingle>
+      <BodySingle title={"Preguntas Frecuentes"}>
           <div style={{ marginTop: '20px'}} >
             {faqs?.map((faq) =>(
               <Accordion key={faq.id}  expanded={expanded === faq.id} onChange={handleChange(faq.id)}>

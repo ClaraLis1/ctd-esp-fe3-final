@@ -9,6 +9,8 @@ import { FormCheckout } from 'dh-marvel/components/ui/formCheckout/FormCheckout'
 import { schema, schema1, schema2 } from 'dh-marvel/components/ui/formCheckout/rules';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
+import{useEffect} from 'react'
 
 
 interface Props {
@@ -17,37 +19,26 @@ interface Props {
 }
 
 const CheckoutPage:NextPage<Props> = ({comic, id})=>{
+  const router = useRouter();
 
-    
+
+   
   type DataForm = yup.InferType<typeof schema>
 
-  const methods = useForm<DataForm>({
-    
-    resolver: yupResolver(schema),
-    
+  const methods = useForm<DataForm>({    
+    resolver: yupResolver(schema),    
     defaultValues :{
-      // customer: {
-      //     name:"",
-      //     lastName:'',
-      //     email:''
-      //   },
-      // address: {
-      //     address1: "",
-      //     address2: "",
-      //     city: "",
-      //     state: "",
-      //     zipCode: ""
-      // },    
-      // card: {
-      //     number: "",
-      //     cvc: "",
-      //     expDate: "",
-      //     nameOnCard: ""
-      //     }
     },
     })
   
-  
+
+      
+      
+        React.useEffect(() => {
+          if (comic.stock==0) 
+          router.push('/');
+        }, []);
+
   
 
   return (

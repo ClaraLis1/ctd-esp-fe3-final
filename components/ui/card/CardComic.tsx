@@ -8,7 +8,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { useRouter } from "next/router";
-import { Stack } from "@mui/material";
 
 
 interface Image{

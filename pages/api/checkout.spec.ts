@@ -30,7 +30,7 @@ describe('Checkout', () => {
             );
         })
     })
-   /* describe('when sending a non POST request', () => {
+   describe('when sending a non POST request', () => {
         it('should return a 405 error', async () => {
             const {req, res} = createMocks({
                 method: 'GET',
@@ -67,7 +67,7 @@ describe('Checkout', () => {
                 expect.objectContaining(ERROR_SERVER),
             );
         })
-    })*/
+    })
     describe('when sending a card without funds', () => {
         it('should return a 400 error', async () => {
             const {req, res} = createMocks({
