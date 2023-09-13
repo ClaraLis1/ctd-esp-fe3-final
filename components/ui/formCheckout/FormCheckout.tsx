@@ -42,8 +42,8 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
         }        
         if(step == 3){
         // setFormData({...formData, card: data})   
-        fetch('http://localhost:3000/api/checkout', 
-        // fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout', 
+        // fetch('http://localhost:3000/api/checkout', 
+        fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout', 
         { 
         method: "POST",
         body: JSON.stringify({...data, comic:comic.id}),       
