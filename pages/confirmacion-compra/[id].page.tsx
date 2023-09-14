@@ -24,11 +24,11 @@ const ConfirmationOrder:NextPage<Props>= ({comic, id}) => {
   
 
     const router= useRouter()
-    const info = localStorage?.getItem("nombre") 
+    // const info = localStorage?.getItem("nombre") 
     
 
 
-    useEffect(()=>{
+    useEffect(()=>{       
         const nombre = localStorage.getItem("nombre")?.replace(/"/g, '')
         setNombre(nombre)
         const apellido = localStorage.getItem("apellido")?.replace(/"/g, '')
@@ -49,15 +49,12 @@ const ConfirmationOrder:NextPage<Props>= ({comic, id}) => {
         localStorage.clear()
         router.push('/');   
 };
-        // React.useEffect(() => {
-        //     if (!localStorage.getItem("nombre") ) 
-        //     router.push('/');
-        // }, []);
+   
 
 
 	return (   
         <>
-             {(info!= null || info != undefined)?
+             {nombre? 
             <> 
         <Head>
             <title>DH-Marvel Store</title>
@@ -80,7 +77,8 @@ const ConfirmationOrder:NextPage<Props>= ({comic, id}) => {
                 </Box>
                         <Button onClick={handelVolver} size="small" variant="contained" sx={{width: "200px", margin:"0 auto" ,mt:"10px", mb:"10px"}} >Volver </Button>
             </BodySingle>           
-         </>:
+         </>
+       :
             <>
             <BodySingle title={"Pagina no disponible..."}>
               
@@ -88,13 +86,13 @@ const ConfirmationOrder:NextPage<Props>= ({comic, id}) => {
 
             </BodySingle>
             </>
-            } 
+            }  
         </>
     );
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const id = Number(context.query?.id)
+    const id = Number(context.params?.id)    
     const data = await getComic(id);
     return {
      props:{

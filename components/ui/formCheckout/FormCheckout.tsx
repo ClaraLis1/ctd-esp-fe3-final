@@ -43,7 +43,7 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
         if(step == 3){
         // setFormData({...formData, card: data})   
         // fetch('http://localhost:3000/api/checkout', 
-       fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout', 
+        fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout', 
         { 
         method: "POST",
         body: JSON.stringify({...data, comic:comic.id}),       
@@ -64,15 +64,7 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
             localStorage.setItem("direccion", direccion);
             localStorage.setItem("ciudad", ciudad);
             localStorage.setItem("provincia", provincia);
-            // router.push(`/confirmacion-compra/${id}`)
-            router.push(
-                {
-                    pathname:'/confirmacion-compra',
-                query:{
-                    id:id
-                }
-            }, '/confirmacion-compra'
-            )
+            router.push(`/confirmacion-compra/${id}`)
         }
        
         return response.json();

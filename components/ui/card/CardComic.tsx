@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { useRouter } from "next/router";
+import BoltIcon from '@mui/icons-material/Bolt';
 
 
 interface Image{
@@ -57,7 +58,7 @@ export const CardComic: FC<Props> = ({title, image, id}) => {
        
         <Grid  display="flex" justifyContent="flex-end" alignSelf='flex-end' alignItems="center">
             <CardActions >
-                    <Button onClick={handlePageCheckout}size="small" variant="contained" sx={{backgroundColor:"#ed1d24"}}>Compra ya!</Button>                 
+                    <Button onClick={handlePageCheckout}size="small" variant="contained" sx={{backgroundColor:"#ed1d24"}}> <BoltIcon  sx={{ color: "black",margin: "0 auto", fontSize: "24px"}}></BoltIcon>Compra ya!</Button>                 
                     <Button onClick={handlePageChange}size="small" variant="contained" sx={{backgroundColor:"#ed1d24"}}>Comprar</Button>                 
                     <Button onClick={handlePageChange} size="small" variant="contained"sx={{backgroundColor:"#ed1d24"}} >Ver Detalle</Button>
             </CardActions>
