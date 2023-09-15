@@ -52,6 +52,18 @@ const PaymentData = () => {
         </Typography>
 
         <CustomTextField
+            name="card.expDate"
+            label="Fecha de expiración"
+            type="text"
+            control={control}
+            autocomplete=""
+            defaultValue=""
+        />
+
+        <Typography variant='caption' color='red'>
+            <ErrorMessage errors={errors} name="card.expDate" />
+        </Typography>           
+        <CustomTextField
             name="card.cvc"
             label="codigo de seguridad cvc"
             type="password"
@@ -64,18 +76,6 @@ const PaymentData = () => {
             <ErrorMessage errors={errors} name="card.cvc" />
         </Typography>
 
-        <CustomTextField
-            name="card.expDate"
-            label="Fecha de expiración"
-            type="text"
-            control={control}
-            autocomplete=""
-            defaultValue=""
-        />
-
-        <Typography variant='caption' color='red'>
-            <ErrorMessage errors={errors} name="card.expDate" />
-        </Typography>           
         </>
   )
 }
