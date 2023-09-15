@@ -22,8 +22,6 @@ interface Props {
 
 const CheckoutPage:NextPage<Props> = ({comic, id})=>{
   const router = useRouter();
-  console.log(comic)
-
    
   type DataForm = yup.InferType<typeof schema>
 
@@ -31,10 +29,7 @@ const CheckoutPage:NextPage<Props> = ({comic, id})=>{
     resolver: yupResolver(schema),    
     defaultValues :{
     },
-    })
-  
-
-      
+    })      
        
 
   return (
