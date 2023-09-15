@@ -1,4 +1,5 @@
 import { TextField } from '@mui/material';
+import React, { ChangeEvent, FocusEvent } from "react";
 import { Control, Controller } from 'react-hook-form';
 
 interface CustomTextFieldProps {
@@ -11,6 +12,10 @@ interface CustomTextFieldProps {
   error?: boolean;
   message?: string;
   textFieldProps?: Record<string, any>;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
+  autocomplete:string;
+
 }
 
 export const CustomTextField = ({
@@ -39,6 +44,7 @@ export const CustomTextField = ({
           required={required}
           sx={{ mb: 2 }}
           {...textFieldProps}
+         
         />
       )}
     />

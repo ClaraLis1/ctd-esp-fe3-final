@@ -102,7 +102,7 @@ export interface URL {
 export interface ComicData {
   id:                 number;
   digitalId:          number;
-  title:              Title;
+  title:              string;
   issueNumber:        number;
   variantDescription: string;
   description:        string;
@@ -167,6 +167,8 @@ export enum Title {
   MarvelPreviews2017 = "Marvel Previews (2017)",
   MarvelPreviews2017Present = "Marvel Previews (2017 - Present)",
 }
+
+
 
 export interface Thumbnail {
   path:      string;

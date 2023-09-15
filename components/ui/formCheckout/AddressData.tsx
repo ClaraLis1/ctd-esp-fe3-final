@@ -16,6 +16,7 @@ const AddressData = () => {
             type="text"
             control={control}
             defaultValue=""
+            autocomplete=""
         />
 
         <Typography variant='caption' color='red'>
@@ -28,6 +29,7 @@ const AddressData = () => {
             type="text"
             control={control}
             defaultValue=""
+            autocomplete=""
         />
         <Typography variant='caption' color='red'>
             <ErrorMessage errors={errors} name="address.address2" />
@@ -39,6 +41,7 @@ const AddressData = () => {
             type="text"
             control={control}
             defaultValue=""
+            autocomplete=""
         />
         <Typography variant='caption' color='red'>
             <ErrorMessage errors={errors} name="address.city" />
@@ -50,6 +53,7 @@ const AddressData = () => {
             type="text"
             control={control}
             defaultValue=""
+            autocomplete=""
         />
         <Typography variant='caption' color='red'>
             <ErrorMessage errors={errors} name="address.state" />
@@ -61,6 +65,7 @@ const AddressData = () => {
             type="text"
             control={control}
             defaultValue=""
+            autocomplete=""
         />
         <Typography variant='caption' color='red'>
             <ErrorMessage errors={errors} name="address.zipCode" />

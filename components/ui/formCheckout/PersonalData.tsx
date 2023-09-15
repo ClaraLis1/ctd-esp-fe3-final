@@ -19,6 +19,7 @@ const PersonalData = () => {
                     type="text"
                     control={control}
                     defaultValue=""
+                    autocomplete=""
                 />
                 <Typography variant='caption' color='red'>
                     <ErrorMessage errors={errors} name="customer.name" />
@@ -30,6 +31,7 @@ const PersonalData = () => {
                     type="text"
                     control={control}
                     defaultValue=""
+                    autocomplete=""
                 />
 
 
@@ -43,6 +45,7 @@ const PersonalData = () => {
                     type="email"
                     control={control}
                     defaultValue=""
+                    autocomplete=""
                 />
 
                 <Typography variant='caption' color='red'>

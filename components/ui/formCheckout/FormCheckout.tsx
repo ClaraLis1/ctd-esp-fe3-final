@@ -25,11 +25,12 @@ const steps = [
 
 export const FormCheckout: FC<Props> = ({id, comic}) => { 
     const router = useRouter()  
-    const {handleSubmit} =useFormContext()
+    const {handleSubmit, watch} =useFormContext()
     const [formData, setFormData] = useState({});
     const [step, setStep] = useState<number>(1);
     const [status, setStatus] = useState('');
-  
+    
+    
     const onSubmit = (data: any) => {      
         
         if(step == 1){
@@ -41,7 +42,7 @@ export const FormCheckout: FC<Props> = ({id, comic}) => {
            
         }        
         if(step == 3){
-        // setFormData({...formData, card: data})   
+        //  setFormData({...formData, card: data})   
         // fetch('http://localhost:3000/api/checkout', 
         fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout', 
         { 
